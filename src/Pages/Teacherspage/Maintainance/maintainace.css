@@ -1,0 +1,34 @@
+.maintainencebanner{
+    width: 100%;
+    height: 450px;
+    position: relative;
+    background-image: url('../../../images/homebanner.jpg');
+}
+.geeks3 {
+    width: 100%;
+    height: 150px;
+    position: relative;
+    background: #457ca0;
+}
+
+.geeks3::before {
+    content: "";
+    width: 50%;
+    height: 100px;
+    position: absolute;
+    top: -38px;
+    left: 0;
+    background: #457ca0;
+    transform: skewY(8deg);
+}
+
+.geeks3::after {
+    content: "";
+    width: 50%;
+    height: 100px;
+    position: absolute;
+    top: -38px;
+    right: 0;
+    background: #457ca0;
+    transform: skewY(-8deg);
+}
