@@ -4,9 +4,13 @@ import teacherimg from '../../images/T-bg.jpg';
 import studentimg from '../../images/papperpencil.jpg';
 import principalimg from '../../images/a-bg.jpg'
 import { useHistory } from 'react-router';
+import useAuth from '../../Context/useAuth';
+
 const Loginform = ({role}) => {
     const [logindata, setLogindata] = useState({});
-    const history = useHistory()
+    const history = useHistory();
+    const {LoginUser, setUser} = useAuth();
+
     const OnBlurHandler = e => {
         const fieldname = e.target.name;
         const fieldvalue = e.target.value;
@@ -15,35 +19,71 @@ const Loginform = ({role}) => {
         newdata[fieldname] = fieldvalue;
         setLogindata(newdata)
     }
+
     const onSubmitHandler = e => {
-        const newdata = {...logindata, role: role}
-        if(role === 'Student' && newdata.password === '123456')
-        {
-            if(newdata.email === 'student@gmail.com' &&  newdata.password === '123456')
-            {  
-                history.push('/studentdashboard')
-            }
-            
-         
-        }
-        else if(role === 'Teacher')
-        {
-            if(newdata.email === 'teacher@gmail.com' && newdata.password === '123456')
+        fetch(`http://localhost:5000/checkuser?email=${logindata.email}`)
+        .then(res => res.json())
+        .then(data => {
+            if(data.userrole === 'Principal' && role === 'Principal')
             {
-                history.push('/teacherhome')
+                LoginUser(logindata.email, logindata.password)
+                    .then((userCredential) => {
+                        // Signed in 
+                        const user = userCredential.user;
+                        // ...
+                        setUser(user)
+                        history.push('/principaldashboard')
+                        
+                    })
+                    .catch((error) => {
+                        console.log('from login user', error.message)
+                    });
+
+                
             }
-        }
-        else if(role === 'Principal')
-        {
-            if(newdata.email === 'principal@gmail.com' && newdata.password === '123456')
+            else if(data.userrole === 'Teacher' && role === 'Teacher')
             {
-                history.push('/principaldashboard')
+                LoginUser(logindata.email, logindata.password)
+                    .then((userCredential) => {
+                        // Signed in 
+                        const user = userCredential.user;
+                        // ...
+                        setUser(user)
+                        history.push('/teacherhome')
+                        
+                    })
+                    .catch((error) => {
+                        console.log('from login user', error.message)
+                    });
+
+                
             }
+            else if (data.userrole === 'Student' && role === 'Student')
+            {
+                LoginUser(logindata.email, logindata.password)
+                    .then((userCredential) => {
+                        // Signed in 
+                        const user = userCredential.user;
+                        // ...
+                        setUser(user)
+                        history.push('/studentdashboard')
+                        
+                    })
+                    .catch((error) => {
+                        console.log('from login user', error.message)
+                    });
+                
+            }
+
             
-        }
-        console.log(newdata)
+
+            else{
+                alert('Sorry Unauthorised User')
+            }
+            e.target.reset()
+        })
         e.preventDefault()
-        e.target.reset()
+        
     }
     return (
      <Row className="d-flex justify-content-center">
@@ -61,7 +101,7 @@ const Loginform = ({role}) => {
          <Col lg={7} sm={12} md={6}>
          <Form onSubmit={onSubmitHandler}>
             <Form.Group as={Col} controlId="formGridState">
-        <Form.Label>State</Form.Label>
+        <Form.Label>Role</Form.Label>
         <Form.Select name="role" onBlur={OnBlurHandler} defaultValue={role}>
             <option>{role}</option>
         </Form.Select>

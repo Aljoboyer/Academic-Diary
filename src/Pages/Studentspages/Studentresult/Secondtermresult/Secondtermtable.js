@@ -3,7 +3,7 @@ import {Row,Table} from 'react-bootstrap';
 import useAuth from '../../../../Context/useAuth';
 import {useLocation} from 'react-router-dom';
 
-const Firsttermresult = () => {
+const Secondtermtable = () => {
     const {user} = useAuth()
     const [result, setResult] = useState({});
     const {state} = useLocation();
@@ -13,12 +13,12 @@ const Firsttermresult = () => {
         .then(res => res.json())
         .then(data => {
             setResult(data)
-        
+          
         } )
     },[user.email, term])
 
     return (
-       <>
+        <>
         {
             result.term ?  <>
             {
@@ -74,7 +74,7 @@ const Firsttermresult = () => {
                         <td  className="fw-bold text-primary fs-6"> {
                              result.Failcount > 0 ? `Fail In ${result.Failcount} Subject` :
                              <> 
-                                GPA {result.firsttermCgpa}
+                                GPA {result.secondtermCgpa}
                              </>
                         }</td>
                     </tr>
@@ -156,7 +156,7 @@ const Firsttermresult = () => {
                         <td  className="fw-bold text-primary fs-6"> {
                             result.Failcount1 > 0 ? `Fail In ${result.Failcount1} Subject` :
                             <> 
-                                GPA {result.firsttermCgpa}
+                                GPA {result.secondtermCgpa}
                             </>
                         }</td>
                     </tr>
@@ -234,7 +234,7 @@ const Firsttermresult = () => {
                             <td  className="fw-bold text-primary fs-6"> {
                                 result.Failcount3 > 0 ? `Fail In ${result.Failcount3} Subject` :
                                 <> 
-                                    GPA {result.firsttermCgpa}
+                                    GPA {result.secondtermCgpa}
                                 </>
                             }</td>
                         </tr>
@@ -249,4 +249,4 @@ const Firsttermresult = () => {
  
 }
 
-export default Firsttermresult;
+export default Secondtermtable;

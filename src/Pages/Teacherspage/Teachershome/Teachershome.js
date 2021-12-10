@@ -3,9 +3,8 @@ import { Col, ListGroup, Row } from 'react-bootstrap';
 import Teachersnoticeboard from '../TeachersNoticeboard/Teachersnoticeboard';
 import Teachersnav from './TeachersNavbar/Teachersnav';
 import Homesidebar from './Homesidebar/Homesidebar';
-import homevectorimg from '../../../images/vector.jpg'
 import './teachershome.css'
-import Particleback from './NanoPart/Particleback';
+
 
 const Teachershome = () => {
    

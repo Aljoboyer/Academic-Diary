@@ -7,9 +7,9 @@ import {
 import StudentHome from '../StudentHome/StudentHome';
 import Studentnavber from '../StudentHome/Studentnavber/Studentnavber';
 import Studentpayment from '../Studentpayment/Studentpayment';
-import Firsttermresult from '../Studentresult/Firsttermresult/Firsttermresult';
-import Secondtermresult from '../Studentresult/Secondtermresult/Secondtermresult';
-import Thirdtermresult from '../Studentresult/Thirdtermresult/Thirdtermresult';
+import Firsttermesultsheet from '../Studentresult/Firsttermresult/Firsttermesultsheet';
+import Secondtermresultsheet from '../Studentresult/Secondtermresult/Secondtermresultsheet';
+import Thirtermresultsheet from '../Studentresult/Thirtermresult/Thirtermresultsheet';
 import Classroutine from '../Studentroutine/Classroutine';
 import Examroutine from '../Studentroutine/Examroutine/Examroutine';
 import Studenttranscript from '../Studenttranscript/Studenttranscript';
@@ -27,12 +27,18 @@ const Studentdashboard = () => {
                     <Route exact path={path}>
                        <StudentHome></StudentHome>
                     </Route>
-                    <Route path={`${path}/firsttermresult`}>
-                        <Firsttermresult></Firsttermresult>
+                    <Route path={`${path}/firsttermesultsheet`}>
+                        <Firsttermesultsheet></Firsttermesultsheet>
                     </Route>
-                    <Route path={`${path}/secondtermresult`}>
-                        <Secondtermresult></Secondtermresult>
+
+                    <Route path={`${path}/secondtermresultsheet`}>
+                        <Secondtermresultsheet></Secondtermresultsheet>
                     </Route>
+
+                    <Route path={`${path}/thirtermresultsheet`}>
+                        <Thirtermresultsheet></Thirtermresultsheet>
+                    </Route>
+                               
                     <Route path={`${path}/examroutine`}>
                         <Examroutine></Examroutine>
                     </Route>

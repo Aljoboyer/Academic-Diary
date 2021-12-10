@@ -1,36 +1,60 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Row, Table } from 'react-bootstrap';
-
+import useAuth from '../../../Context/useAuth';
 const Transcripttable = () => {
+    const {user} = useAuth()
+   const [cgpas, setCgpas] = useState([]);
+    const [userdata, setUserdata] = useState({})
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/transcriptget?email=${user.email}`)
+        .then(res => res.json())
+        .then(data => setCgpas(data))
+    },[user.email])
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/gettransdetails?email=${user.email}`)
+        .then(res => res.json())
+        .then(data => setUserdata(data))
+    },[user.email])
+
+    
+
+    const a = cgpas?.find(cg =>  cg.firsttermCgpa)
+    const b = cgpas?.find(cg => cg.secondtermCgpa)
+    const c = cgpas?.find(cg => cg.thirdtermCgpa)
+
+    let cgobject = {first: a?.firsttermCgpa, second: b?.secondtermCgpa, third: c?.thirdtermCgpa};
+
+    const totalcgpa = parseFloat((parseInt(cgobject.first) + parseInt(cgobject.second) + parseInt(cgobject.third)) / 3).toFixed(2)
+
     return (
-        <Row className="container-fluid">
-        <h4 className="text-star my-4">Chittagong City Academy School</h4>
+        <>
+            {
+                cgpas.length && userdata.studentname ?
+                <Row className="container-fluid">
+                       <hr/>
+        <h2 className="mx-4 ps-4 my-4 fw-bold">Chittagong City Academy School</h2>
+        <hr/>
+     
         <Row className="container">
-            <Col  className="d-flex"  lg={3}>
-                <div>
-                    <h5>Roll: </h5>
-                    <h5>Result:</h5>
-                </div>
-                <div>
-                   <p> 22</p>
-                    <h6 className="ms-3 pb-4"> GPA=3.5</h6>
-                </div>
+        
+            <Col  className=""  lg={3}>
+                    <h5>Roll: {userdata.studentroll}</h5>
+                    <hr/>
+                    <h5>Result: {totalcgpa}</h5>
             </Col>
-            <Col className="d-flex" lg={6}>
-                <div>
-                <h5>Name: </h5>
-                <h5>Father Name: </h5>
-                <h5>Mother Name: </h5>
-                <h5>Date Of birth: </h5>
-                <h5>Institution: </h5>
-                </div>
-                <div>
-                <h5> Student one </h5>
-                <h5 className="ms-3"> XYZ </h5>
-                <h5 className="ms-3"> Abc </h5>
-                <h5 className="ms-3"> 22/06/39</h5>
-                <h5 className="ms-3"> Chittagong City Academy School </h5>
-                </div>
+            <Col className="d-flex justify-content-center" lg={6}>
+               <div>
+               <h5 className="my-3">Name: {userdata.studentname} </h5>
+                <hr/>
+                <h5 className="my-3">Father Name: {userdata.studentfather}</h5>
+                <hr/>
+                <h5 className="my-3">Mother Name: {userdata.studentmother}</h5>
+                {/* <h5>Date Of birth:  {userdata.studentbirthdate}</h5> */}
+                <hr/>
+                <h5>Institution: Chittagong City Academy School</h5>
+               </div>
             </Col>
         </Row>
         <Row className="container">
@@ -45,15 +69,15 @@ const Transcripttable = () => {
         <tbody>
             <tr>
             <td>First Semister</td>
-            <td>3.50</td>
+            <td>{cgobject.first}</td>
             </tr>
             <tr>
             <td>Second Semister</td>
-            <td>3.88</td>
+            <td>{cgobject.second}</td>
             </tr>
             <tr>
             <td>Third Semister</td>
-            <td>2.90</td>
+            <td>{cgobject.third}</td>
             </tr>
         </tbody>
     </Table>
@@ -66,14 +90,18 @@ const Transcripttable = () => {
         </thead>
         <tbody>
             <tr>
-            <td><h5>GPA</h5></td>
-            <td><h5>3.50</h5></td>
+            <td><h5>Total GPA</h5></td>
+            <td><h5>{totalcgpa}</h5></td>
             </tr>
         </tbody>
     </Table>
             </Col>
         </Row>
-    </Row>
+        </Row>
+                
+                : 'Hi'
+            }
+        </>
     );
 };
 

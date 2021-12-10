@@ -7,15 +7,15 @@ import {
   } from "react-router-dom";
 import Registerstudent from '../Registerstudent/Registerstudent';
 import Addresult from '../Addstudentresult/Addresult';
-import Classone from '../MaintainStudents/ClassOneStudent/Classone';
-import Classtwo from '../MaintainStudents/ClassTowStudent/Classtwo';
 import MaintainenceBanner from './MaintainenceBanner';
 import Dashboardnav from './Dashboardnav';
 import Classroutine from '../Routinepages/Classroutine'
 import Examroutine from '../Routinepages/Examroutine';
-
+import Addresultforonetofour from '../Addstudentresult/Addresultforonetofour';
+import Allstduent from '../MaintainStudents/Allstduent/Allstduent';
+import Addresultfive from '../Addstudentresult/Addresultfive'
 const Maintainance = () => {
-    let { path, url } = useRouteMatch();
+    let { path } = useRouteMatch();
     return (
         <div className="container-fluid">
             <Dashboardnav></Dashboardnav>
@@ -30,17 +30,21 @@ const Maintainance = () => {
                     <Route path={`${path}/addresult`}>
                         <Addresult></Addresult>
                     </Route>
-                    <Route path={`${path}/classone`}>
-                        <Classone></Classone>
+                    <Route path={`${path}/addresultforonetofour`}>
+                        <Addresultforonetofour></Addresultforonetofour>
                     </Route>
-                    <Route path={`${path}/classtwo`}>
-                        <Classtwo></Classtwo>
+                    <Route path={`${path}/allstduent`}>
+                        <Allstduent></Allstduent>
                     </Route>
                     <Route path={`${path}/classroutine`}>
                         <Classroutine></Classroutine>
                     </Route>
                     <Route path={`${path}/examroutine`}>
                         <Examroutine></Examroutine>
+                    </Route>
+
+                    <Route path={`${path}/addresultfive`}>
+                        <Addresultfive></Addresultfive>
                     </Route>
                 </Col>
                 <Col lg={2} sm={12} md={6}>

@@ -1,18 +1,29 @@
 import React from 'react';
 import { ListGroup, Dropdown  } from 'react-bootstrap';
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     Link,
-    useParams,
-    useRouteMatch
+    useRouteMatch,
+    useHistory
   } from "react-router-dom";
+import useAuth from '../../../../Context/useAuth';
 
 const Studentdashboardsidebar = () => {
-    let { path, url } = useRouteMatch();
+    let {  url } = useRouteMatch();
+    const {resultclass, LogOutUser} = useAuth();
+    const history = useHistory();
+
+    const LogoutHandler = () => {
+        LogOutUser(history)
+    }
+
+    const onClickHandler = (result, term) => {
+        history.push( `${url}/${result}`, {state: {term}})
+    }
     return (
         <ListGroup className="text-center ">
+            <ListGroup.Item onClick={LogoutHandler} action variant="dark">
+            <h4 className="fw-bold text-center ">Logout</h4>
+        </ListGroup.Item>
         <ListGroup.Item action variant="dark">
         <Link className="homelink" to={`${url}`}><h4 className="fw-bold text-center ">Home</h4></Link>
         </ListGroup.Item>
@@ -23,9 +34,9 @@ const Studentdashboardsidebar = () => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                <Dropdown.Item as={Link} to={`${url}/firsttermresult`}>First Term</Dropdown.Item>
-                    <Dropdown.Item as={Link} to={`${url}/secondtermresult`}>Second Term</Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/thirdtermresult" >Final Term</Dropdown.Item>
+                <Dropdown.Item onClick={() => onClickHandler('firsttermesultsheet', 'First-Term')}>First Term</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onClickHandler('secondtermresultsheet', 'Second-Term')}  >Second Term</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onClickHandler('thirtermresultsheet', 'Third-Term')}  >Third Term</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
         </ListGroup.Item>

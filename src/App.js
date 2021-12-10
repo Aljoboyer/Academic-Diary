@@ -4,8 +4,7 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Teachershome from './Pages/Teacherspage/Teachershome/Teachershome';
 import Maintainance from './Pages/Teacherspage/Maintainance/Maintainance';
@@ -18,10 +17,13 @@ import Individualresult from './Pages/Teacherspage/MaintainStudents/Individualre
 import Studentdashboard from './Pages/Studentspages/Studentdashboard/Studentdashboard';
 import Userhome from './Pages/AlluserHomePages/Userhome/Userhome';
 import Alluserloginpage from './Pages/AllusersLonginPage/Alluserloginpage';
+import Authprovider from './Context/Authprovider';
 
 function App() {
   return (
     <div className="container-fluid">
+      <Authprovider>
+       
         <Router>
             <Switch>
               <Route exact path="/">
@@ -65,6 +67,7 @@ function App() {
               </Route>
             </Switch>
         </Router>
+        </Authprovider>
     </div>
   );
 }

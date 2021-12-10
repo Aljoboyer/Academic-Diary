@@ -1,8 +1,14 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link , useHistory} from 'react-router-dom';
+import useAuth from '../../../Context/useAuth';
 
 const Principalnavbar = () => {
+  const {user, LogOutUser} = useAuth()
+  const history = useHistory()
+  const LogoutHandler = () => {
+    LogOutUser(history)
+  }
     return (
         <Navbar  collapseOnSelect expand="lg" bg="primary" className="teachersnavbar">
         <Container className="p-3">
@@ -13,7 +19,9 @@ const Principalnavbar = () => {
             <Nav.Link className="fw-bold fs-6 text-dark" as={Link} to="/princpalpublishnotice">Publish Notice For Teachers</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link className="fw-bold fs-5 text-dark" href="#deets">Login/Logout</Nav.Link>
+            {
+              user.email && <button onClick={LogoutHandler}  className="btn btn-light text-primary fw-bold p-2" >Logout</button>
+            }
           </Nav>
         </Navbar.Collapse>
         </Container>

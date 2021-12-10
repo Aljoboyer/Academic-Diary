@@ -1,8 +1,15 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
+import useAuth from '../../../Context/useAuth';
 
 const Dashboardnav = () => {
+  const {user, LogOutUser} = useAuth()
+  const history = useHistory()
+  const LogoutHandler = () => {
+    LogOutUser(history)
+  }
+
     return (
         <Navbar  collapseOnSelect expand="lg" className="">
         <Container className="p-3">
@@ -13,8 +20,11 @@ const Dashboardnav = () => {
            
           </Nav>
           <Nav>
-            <Nav.Link className="fw-bold fs-5 text-primary" href="#deets">Login/Logout</Nav.Link>
-          </Nav>
+          <Nav>
+        {
+          user.email && <button onClick={LogoutHandler}  className="btn btn-dark text-light fw-bold fs-5">Logout</button>
+        }
+    </Nav>          </Nav>
         </Navbar.Collapse>
         </Container>
       </Navbar>

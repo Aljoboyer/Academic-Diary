@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Table } from 'react-bootstrap';
+import {  Row, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Teachersnav from '../Teachershome/TeachersNavbar/Teachersnav';
 

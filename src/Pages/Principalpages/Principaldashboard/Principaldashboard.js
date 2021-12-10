@@ -7,15 +7,18 @@ import {Row, Col} from 'react-bootstrap'
 import Principalhome from '../Principalhome/Principalhome';
 import Registerstudent from '../../Teacherspage/Registerstudent/Registerstudent';
 import Addresult from '../../Teacherspage/Addstudentresult/Addresult';
-import Classone from '../../Teacherspage/MaintainStudents/ClassOneStudent/Classone';
-import Classtwo from '../../Teacherspage/MaintainStudents/ClassTowStudent/Classtwo';
 import Classroutine from '../../Teacherspage/Routinepages/Classroutine';
 import Examroutine from '../../Teacherspage/Routinepages/Examroutine';
 import Paymentstatus from '../../Teacherspage/Paymentcheckpage/Paymentstatus';
 import Addteachers from '../Addteachers/Addteachers';
 import Dashboardsidebar from './Dashboardsidbar/Dashboardsidebar';
 import Principalnavbar from '../Principalnavbar/Principalnavbar';
-import Maintainteachers from '../Maintainallteachers/Maintainteachers'
+import Maintainteachers from '../Maintainallteachers/Maintainteachers';
+import Addstudents from '../Addstudent/Addstudents';
+import Addresultforonetofour from '../../Teacherspage/Addstudentresult/Addresultforonetofour';
+import Allstduent from '../../Teacherspage/MaintainStudents/Allstduent/Allstduent';
+import Addresultfive from '../../Teacherspage/Addstudentresult/Addresultfive';
+
 const Principaldashboard = () => {
     let { path } = useRouteMatch();
     return (
@@ -32,11 +35,11 @@ const Principaldashboard = () => {
                     <Route path={`${path}/addresult`}>
                         <Addresult></Addresult>
                     </Route>
-                    <Route path={`${path}/classone`}>
-                        <Classone></Classone>
+                    <Route path={`${path}/addresultforonetofour`}>
+                        <Addresultforonetofour></Addresultforonetofour>
                     </Route>
-                    <Route path={`${path}/classtwo`}>
-                        <Classtwo></Classtwo>
+                    <Route path={`${path}/allstduent`}>
+                        <Allstduent></Allstduent>
                     </Route>
                     <Route path={`${path}/classroutine`}>
                         <Classroutine></Classroutine>
@@ -52,6 +55,13 @@ const Principaldashboard = () => {
                     </Route>
                     <Route path={`${path}/maintainteachers`}>
                         <Maintainteachers></Maintainteachers>
+                    </Route>
+                    <Route path={`${path}/addstudent`}>
+                        <Addstudents></Addstudents>
+                    </Route>
+
+                    <Route path={`${path}/addresultfive`}>
+                        <Addresultfive></Addresultfive>
                     </Route>
                 </Col>
                 <Col lg={2} sm={12} md={6}>
