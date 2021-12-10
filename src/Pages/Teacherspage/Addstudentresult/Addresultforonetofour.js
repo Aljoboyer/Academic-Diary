@@ -83,7 +83,7 @@ const Addresultforonetofour = () => {
       {
           bangla2Cgpa = 4.00
       }
-      if(parseInt(result.bangla1total) >= 80 && parseInt(result.bangla1total) <= 100)
+      if(parseInt(result.bangla2total) >= 80 && parseInt(result.bangla2total) <= 100)
       {
           bangla2Cgpa = 5.00
       }
@@ -113,7 +113,7 @@ const Addresultforonetofour = () => {
       {
           english1Cgpa = 4.00
       }
-      if(parseInt(result.bangla1total) >= 80 && parseInt(result.bangla1total) <= 100)
+      if(parseInt(result.english1total) >= 80 && parseInt(result.english1total) <= 100)
       {
           english1Cgpa = 5.00
       }

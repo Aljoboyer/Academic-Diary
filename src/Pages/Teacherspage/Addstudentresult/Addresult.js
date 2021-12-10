@@ -293,7 +293,7 @@ const Addresult = () => {
         <Row className="mb-3 ">
             <Form.Group as={Col} controlId="formGridEmail">
               <Form.Label className="fw-bold fs-6">Drawing</Form.Label>
-              <Form.Control name="gs" type="text" onBlur={OnblurHandler} placeholder="Enter Subject name" />
+              <Form.Control name="draw" type="text" onBlur={OnblurHandler} placeholder="Enter Subject name" />
             </Form.Group>
         
             <Form.Group as={Col} controlId="formGridAddress1">

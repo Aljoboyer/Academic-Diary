@@ -13,7 +13,7 @@ const Allstduent = () => {
         .then(data => setStudents(data))
     },[section, classteacher])
 
-
+console.log(students, state)
     return (
         <Row>
             <h4 className="text-center">Students of Class One</h4>
@@ -31,7 +31,7 @@ const Allstduent = () => {
                             <tr>
                     <td>{student.studentname}</td>
                     <td>{student.studentroll}</td>
-                    <td><button className="btn btn-primary">See Performance</button> </td>
+                    <td><Link to={`/individualresult/${student._id}`}><button className="btn btn-primary">See Performance</button></Link></td>
                     </tr>
                             
                             )

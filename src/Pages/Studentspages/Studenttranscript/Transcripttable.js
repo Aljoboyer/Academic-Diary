@@ -51,7 +51,7 @@ const Transcripttable = () => {
                 <h5 className="my-3">Father Name: {userdata.studentfather}</h5>
                 <hr/>
                 <h5 className="my-3">Mother Name: {userdata.studentmother}</h5>
-                {/* <h5>Date Of birth:  {userdata.studentbirthdate}</h5> */}
+                <h5>Date Of birth:  {userdata.studentbirthdate}</h5>
                 <hr/>
                 <h5>Institution: Chittagong City Academy School</h5>
                </div>

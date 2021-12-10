@@ -9,7 +9,6 @@ import {
 import Teachershome from './Pages/Teacherspage/Teachershome/Teachershome';
 import Maintainance from './Pages/Teacherspage/Maintainance/Maintainance';
 import Publishnotice from './Pages/Teacherspage/Publishnotice/Publishnotice';
-import Resultedit from './Pages/Teacherspage/MaintainStudents/ResultEdit/Resultedit';
 import Individualpaymentcheck from './Pages/Teacherspage/Paymentcheckpage/Individualpaymentcheck';
 import Principaldashboard from './Pages/Principalpages/Principaldashboard/Principaldashboard';
 import Princpalpublishnotice from './Pages/Principalpages/PrincipalPublishNotice/Princpalpublishnotice';
@@ -18,7 +17,9 @@ import Studentdashboard from './Pages/Studentspages/Studentdashboard/Studentdash
 import Userhome from './Pages/AlluserHomePages/Userhome/Userhome';
 import Alluserloginpage from './Pages/AllusersLonginPage/Alluserloginpage';
 import Authprovider from './Context/Authprovider';
-
+import KGtonurseryresultedit from './Pages/Teacherspage/MaintainStudents/ResultEdit/KGtonurseryresultedit';
+import Classonetofoureditresult from './Pages/Teacherspage/MaintainStudents/ResultEdit/Classonetofoureditresult';
+import Classfiveeditresult from './Pages/Teacherspage/MaintainStudents/ResultEdit/Classfiveeditresult';
 function App() {
   return (
     <div className="container-fluid">
@@ -44,20 +45,26 @@ function App() {
               <Route  path="/teachersmaintainence">
                   <Maintainance></Maintainance>
               </Route>
-              <Route exact path="/individualresult">
+              <Route exact path="/individualresult/:id">
                 <Individualresult></Individualresult>
               </Route>
               <Route exact path="/publishnotice">
                 <Publishnotice></Publishnotice>
               </Route>
-              <Route exact path="/resultedit">
-                  <Resultedit></Resultedit>
+              <Route exact path="/kgtonurseryresultedit/:id">
+                  <KGtonurseryresultedit></KGtonurseryresultedit>
               </Route>
               <Route exact path="/individualpaymentcheck">
                 <Individualpaymentcheck></Individualpaymentcheck>
               </Route>
-
-
+              <Route exact path="/classonetofoureditresult/:id">
+                  <Classonetofoureditresult></Classonetofoureditresult>
+              </Route>
+              
+              <Route exact path="/classfiveeditresult/:id">
+                  <Classfiveeditresult></Classfiveeditresult>
+              </Route>
+              
               {/* ------------principal route---------- */}
               <Route path="/principaldashboard">
                 <Principaldashboard></Principaldashboard>

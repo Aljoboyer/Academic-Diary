@@ -1,31 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import {Row,Table} from 'react-bootstrap';
-import useAuth from '../../../../Context/useAuth';
-import {useLocation} from 'react-router-dom';
+import React from 'react';
+import { Row, Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-const Firsttermresult = () => {
-    const {user} = useAuth()
-    const [result, setResult] = useState({});
-    const {state} = useLocation();
-    const {term} =  state.state;
-    useEffect(() => {
-        fetch(`http://localhost:5000/result?email=${user.email}&&term=${term}`)
-        .then(res => res.json())
-        .then(data => {
-            setResult(data)
-        
-        } )
-    },[user.email, term])
-
+const Firsttermallresult = ({result}) => {
     return (
-       <>
+        <>
         {
             result.term ?  <>
             {
                 result.class === 'KG' || result.class === 'Nursery'  
                 ? 
                 <Row>
-                <h4 className="text-center my-4">{term} result of {result.class} {result.section}</h4>
+                    <h1 className="text-center my-4 fw-bold text-primary">Academic Performance Of {result.studentname}</h1>
+                <h4 className="text-center my-4">{result.term} result of {result.class} {result.section}</h4>
                 <Table striped bordered hover responsive="sm">
                 
                 <thead>
@@ -60,7 +47,7 @@ const Firsttermresult = () => {
                     <td>{result.mathCgpa}</td>
                     </tr>
                     <tr>
-                    <td>{result.draw}</td>
+                    <td>{result.gs}</td>
                     <td>{result.drawmid}</td>
                     <td>{result.drawfinal}</td>
                     <td>{result.drawtotal}</td>
@@ -80,12 +67,14 @@ const Firsttermresult = () => {
                     </tr>
                 </tbody>
             </Table>
+            <Link to={`/kgtonurseryresultedit/${result._id}`}><button className="btn btn-warning text-dark fw-bold p-2">Edit Result</button></Link>
                 </Row> : 
                 ''
             }
             {
                 result.class === 'Class-One' || result.class === 'Class-Two' || result.class === 'Class-Three' ||  result.class === 'Class-Four' ? <Row>
-                <h4 className="text-center my-4">{term} result of {result.class} {result.section}</h4>
+                           <h1 className="text-center my-4 fw-bold text-primary">Academic Performance Of {result.studentname}</h1>
+                <h4 className="text-center my-4">{result.term} result of {result.class} {result.section}</h4>
                 <Table striped bordered hover responsive="sm">
                 
                 <thead>
@@ -162,12 +151,14 @@ const Firsttermresult = () => {
                     </tr>
                 </tbody>
             </Table>
+            <Link to={`/classonetofoureditresult/${result._id}`}><button className="btn btn-warning text-dark fw-bold p-2">Edit Result</button></Link>
             </Row> : ''
             }
 
             {
                 result.class === 'Class-Five' &&  <Row>
-                    <h4 className="text-center my-4">{term} result of {result.class} {result.section}</h4>
+                           <h1 className="text-center my-4 fw-bold text-primary">Academic Performance Of {result.studentname}</h1>
+                    <h4 className="text-center my-4">{result.term} result of {result.class} {result.section}</h4>
                     <Table striped bordered hover responsive="sm">
                     
                     <thead>
@@ -240,13 +231,13 @@ const Firsttermresult = () => {
                         </tr>
                     </tbody>
                 </Table>
+                <Link to={`/classfiveeditresult/${result._id}`}><button className="btn btn-warning text-dark fw-bold p-2">Edit Result</button></Link>
                 </Row>
             }
         </> : <h2 className="fw-bold text-warning my-4 text-center">Result is Not Available</h2>
         }
        </>
-)
- 
-}
+    );
+};
 
-export default Firsttermresult;
+export default Firsttermallresult;

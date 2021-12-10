@@ -1,74 +1,48 @@
 import React from 'react';
-import {  Row, Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import Teachersnav from '../Teachershome/TeachersNavbar/Teachersnav';
+import { useEffect , useState} from 'react';
+import {  Row } from 'react-bootstrap';
+import {  useParams } from 'react-router-dom';
+import Dashboardnav from '../Maintainance/Dashboardnav';
+import Firsttermallresult from './Termwiseresult/Firsttermallresult';
+import Secondtermallresult from './Termwiseresult/Secondtermallresult';
+import Thirdtermallresult from './Termwiseresult/Thirdtermallresult';
 
 const Individualresult = () => {
+    const {id} = useParams()
+    const [results, setResults] = useState()
+    useEffect(() => {
+        fetch(`http://localhost:5000/getindividualresult/${id}`)
+        .then(res => res.json())
+        .then(data => setResults(data))
+    },[id])
+
+    
+    const first = results?.find(result => result.term === 'First-Term');
+    const second= results?.find(result => result.term === 'Second-Term');
+    const third = results?.find(result => result.term === 'Third-Term');
+
+    const newresult = {first, second, third};
+    console.log('id',id)
+    console.log('fromt individual results',results)
     return (
         <div className="container-fluid">
-           
-            <h1 className="text-center">Student-1 First Semester Result</h1>
-            <Row>
-            <Table striped bordered hover responsive="sm">
-                <thead>
-                    <tr>
-                    <th>Subject Name</th>
-                    <th>Subject Code</th>
-                    <th>Mid Term</th>
-                    <th>Final Term</th>
-                    <th>Total marks</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <td>Banlga First</td>
-                    <td>101</td>
-                    <td>15</td>
-                    <td>60</td>
-                    <td>75</td>
-                    </tr>
-                    <tr>
-                    <td>Bangla Second</td>
-                    <td>102</td>
-                    <td>15</td>
-                    <td>50</td>
-                    <td>65</td>
-                    </tr>
-                    <tr>
-                    <td>English First</td>
-                    <td>301</td>
-                    <td>15</td>
-                    <td>60</td>
-                    <td>75</td>
-                    </tr>
-
-                    <tr>
-                    <td>English Second</td>
-                    <td>302</td>
-                    <td>15</td>
-                    <td>60</td>
-                    <td>75</td>
-                    </tr>
-                    <tr>
-                    <td>Math</td>
-                    <td>502</td>
-                    <td>10</td>
-                    <td>50</td>
-                    <td>60</td>
-                    </tr>
-                    <tr>
-                    <td>General Science</td>
-                    <td>602</td>
-                    <td>10</td>
-                    <td>50</td>
-                    <td>60</td>
-                    </tr>
-                </tbody>
-            </Table>
-            <Link to="/resultedit"><button  className="btn btn-primary w-25">Edit Result</button></Link>
-            </Row>
+            <Dashboardnav></Dashboardnav>
+          {
+              results?.length > 0 ?   <Row>
+              {
+              newresult?.first?.term === 'First-Term' && <Firsttermallresult result={newresult.first}></Firsttermallresult>
+              }
+              {
+              newresult?.second?.term === 'Second-Term' && <Secondtermallresult result={newresult.second}></Secondtermallresult>
+              }
+              {
+              newresult?.third?.term === 'Third-Term' && <Thirdtermallresult result={newresult.third}></Thirdtermallresult>
+              }
+          </Row> : "Hi"
+          }
         </div>
     );
 };
 
 export default Individualresult;
+

@@ -61,7 +61,7 @@ const Thirtermresulttable = () => {
                     <td>{result.mathCgpa}</td>
                     </tr>
                     <tr>
-                    <td>{result.gs}</td>
+                    <td>{result.draw}</td>
                     <td>{result.drawmid}</td>
                     <td>{result.drawfinal}</td>
                     <td>{result.drawtotal}</td>
