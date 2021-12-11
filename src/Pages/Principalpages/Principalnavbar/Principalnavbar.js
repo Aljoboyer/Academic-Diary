@@ -12,7 +12,7 @@ const Principalnavbar = () => {
     return (
         <Navbar  collapseOnSelect expand="lg" bg="primary" className="teachersnavbar">
         <Container className="p-3">
-        <Navbar.Brand className="fw-bold fs-1 text-light" as={Link} to="/principaldashboard" >Principal Dashboard</Navbar.Brand>
+        <Navbar.Brand className="fw-bold fs-3 text-light" as={Link} to="/principaldashboard" >Principal Dashboard</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">

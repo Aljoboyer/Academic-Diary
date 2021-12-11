@@ -18,6 +18,7 @@
     "react-scripts": "4.0.3",
     "react-to-pdf": "0.0.14",
     "react-to-print": "^2.14.1",
+    "sweetalert2": "^11.3.0",
     "tsparticles": "^1.37.4",
     "web-vitals": "^1.1.2"
   },

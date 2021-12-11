@@ -15,7 +15,7 @@ const Teachershome = () => {
                 <Col lg={3} md={6} sm={12} className="d-flex align-items-center">
                     <Homesidebar></Homesidebar>
                 </Col>
-                <Col lg={7} md={6} sm={12} className="d-flex justify-content-center align-items-center">
+                <Col lg={7} md={6} sm={12} className=" d-flex justify-content-center align-items-center">
                         <Teachersnoticeboard></Teachersnoticeboard>
                 </Col>
                 
