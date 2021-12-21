@@ -76,8 +76,7 @@ const Publishnotice = () => {
         })
     }
 
-    const NoticeEditHandler = (id) =>{
-        
+    const NoticeEditHandler = (id) =>{  
         fetch(`http://localhost:5000/getstudenteditnotice/${id}`)
         .then(res => res.json())
         .then(data => {
@@ -88,7 +87,6 @@ const Publishnotice = () => {
 
     const Edithanlder = (e) => {
         e.preventDefault()
-      
         fetch(`http://localhost:5000/putstudenteditnotice/${editresult._id}`,{
             method: 'PUT',
             headers: {

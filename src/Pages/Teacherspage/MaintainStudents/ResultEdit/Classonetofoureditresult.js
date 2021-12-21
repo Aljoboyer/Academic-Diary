@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Form , Button, Row} from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import useAuth from '../../../../Context/useAuth';
+import Principalnavbar from '../../../Principalpages/Principalnavbar/Principalnavbar';
 import Dashboardnav from '../../Maintainance/Dashboardnav';
 
 const Classonetofoureditresult = () => {
     const {id} = useParams();
     const [result, setResult] = useState({});
+    const {user}  = useAuth()
 
     const OnblurHandler = e => {
         const fieldname = e.target.name;
@@ -283,7 +286,7 @@ const Classonetofoureditresult = () => {
 
     return (
         <div className="container-fluid">
-            <Dashboardnav></Dashboardnav>
+             { user.email === 'principal@gmail.com' ? <Principalnavbar></Principalnavbar> : <Dashboardnav></Dashboardnav>}
             <Form onSubmit={ResultSubmitHandler} className="p-3 addresultform">
           <h4 className="fw-bold text-primary text-center my-4">Edit Student Result</h4>
         <Row className="mb-3">

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Row, Table } from 'react-bootstrap';
+import { Col, Row, Spinner, Table } from 'react-bootstrap';
 import useAuth from '../../../Context/useAuth';
 const Transcripttable = () => {
     const {user} = useAuth()
@@ -13,9 +13,15 @@ const Transcripttable = () => {
     },[user.email])
 
     useEffect(() => {
+        if(user.email)
+        {
         fetch(`http://localhost:5000/gettransdetails?email=${user.email}`)
         .then(res => res.json())
         .then(data => setUserdata(data))
+        }
+        else{
+            return 'HI'
+        }
     },[user.email])
 
     
@@ -31,7 +37,7 @@ const Transcripttable = () => {
     return (
         <>
             {
-                cgpas.length && userdata.studentname ?
+                cgpas?.length && userdata?.studentname ?
                 <Row className="container-fluid">
                        <hr/>
         <h2 className="mx-4 ps-4 my-4 fw-bold">Chittagong City Academy School</h2>
@@ -99,7 +105,7 @@ const Transcripttable = () => {
         </Row>
         </Row>
                 
-                : 'Hi'
+                : <Spinner animation="border" />
             }
         </>
     );

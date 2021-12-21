@@ -49,18 +49,9 @@ const Studentdashboardsidebar = () => {
         <ListGroup.Item action variant="warning">
            <Link to={`${url}/studenttranscript`}> <button className="btn btn-warning">Transcript</button></Link>
         </ListGroup.Item>
-        <ListGroup.Item action variant="warning">
-        <Dropdown>
-                <Dropdown.Toggle variant="warning" id="dropdown-basic">
-                   Payment
-                </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                <Dropdown.Item as={Link} to={`${url}/studentpayment`}>First Term</Dropdown.Item>
-                    <Dropdown.Item as={Link} to={`${url}/classtwo`}>Second Term</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Final Term</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
+        <ListGroup.Item action variant="secondary">
+            <Link to={`${url}/studentpayment`}><button className='btn btn-warning fw-bold text-dark'>Payment</button></Link>
         </ListGroup.Item>
      </ListGroup>
     );

@@ -6,6 +6,8 @@ import {
   } from "react-router-dom";
 import StudentHome from '../StudentHome/StudentHome';
 import Studentnavber from '../StudentHome/Studentnavber/Studentnavber';
+import Bikashpayment from '../Studentpayment/Bikashpayment/Bikashpayment';
+import PaymentSuccess from '../Studentpayment/PaymentSuccess';
 import Studentpayment from '../Studentpayment/Studentpayment';
 import Firsttermesultsheet from '../Studentresult/Firsttermresult/Firsttermesultsheet';
 import Secondtermresultsheet from '../Studentresult/Secondtermresult/Secondtermresultsheet';
@@ -50,6 +52,12 @@ const Studentdashboard = () => {
                     </Route>
                     <Route path={`${path}/studentpayment`}>
                         <Studentpayment></Studentpayment>
+                    </Route>
+                    <Route path={`${path}/bikashpayment`}>
+                        <Bikashpayment></Bikashpayment>
+                    </Route>
+                    <Route path={`${path}/success`}>
+                        <PaymentSuccess></PaymentSuccess>
                     </Route>
                 </Col>
             </Row>

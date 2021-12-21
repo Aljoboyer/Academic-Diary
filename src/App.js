@@ -9,7 +9,6 @@ import {
 import Teachershome from './Pages/Teacherspage/Teachershome/Teachershome';
 import Maintainance from './Pages/Teacherspage/Maintainance/Maintainance';
 import Publishnotice from './Pages/Teacherspage/Publishnotice/Publishnotice';
-import Individualpaymentcheck from './Pages/Teacherspage/Paymentcheckpage/Individualpaymentcheck';
 import Principaldashboard from './Pages/Principalpages/Principaldashboard/Principaldashboard';
 import Princpalpublishnotice from './Pages/Principalpages/PrincipalPublishNotice/Princpalpublishnotice';
 import Individualresult from './Pages/Teacherspage/MaintainStudents/Individualresult';
@@ -20,6 +19,10 @@ import Authprovider from './Context/Authprovider';
 import KGtonurseryresultedit from './Pages/Teacherspage/MaintainStudents/ResultEdit/KGtonurseryresultedit';
 import Classonetofoureditresult from './Pages/Teacherspage/MaintainStudents/ResultEdit/Classonetofoureditresult';
 import Classfiveeditresult from './Pages/Teacherspage/MaintainStudents/ResultEdit/Classfiveeditresult';
+import Individualpaymentcheck from './Pages/Principalpages/Paymentcheckpage/Individualpaymentcheck';
+import Facilities from './Pages/AlluserHomePages/Facilities/Facilities';
+import Academic from './Pages/AlluserHomePages/Academic/Academic';
+import Admission from './Pages/AlluserHomePages/Admission/Admission';
 function App() {
   return (
     <div className="container-fluid">
@@ -29,6 +32,15 @@ function App() {
             <Switch>
               <Route exact path="/">
                 <Userhome></Userhome>
+                </Route>
+                <Route exact path="/facilities">
+                  <Facilities></Facilities>
+                </Route>
+                <Route exact path="/academic">
+                  <Academic></Academic>
+                </Route>
+                <Route exact path="/admission">
+                  <Admission></Admission>
                 </Route>
                 <Route exact path="/alluserloginpage">
                   <Alluserloginpage></Alluserloginpage>
@@ -54,7 +66,7 @@ function App() {
               <Route exact path="/kgtonurseryresultedit/:id">
                   <KGtonurseryresultedit></KGtonurseryresultedit>
               </Route>
-              <Route exact path="/individualpaymentcheck">
+              <Route exact path="/individualpaymentcheck/:id">
                 <Individualpaymentcheck></Individualpaymentcheck>
               </Route>
               <Route exact path="/classonetofoureditresult/:id">
@@ -72,6 +84,7 @@ function App() {
               <Route exact path="/princpalpublishnotice">
                 <Princpalpublishnotice></Princpalpublishnotice>
               </Route>
+              
             </Switch>
         </Router>
         </Authprovider>

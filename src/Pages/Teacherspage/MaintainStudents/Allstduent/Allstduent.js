@@ -13,7 +13,7 @@ const Allstduent = () => {
         .then(data => setStudents(data))
     },[section, classteacher])
 
-console.log(students, state)
+
     return (
         <Row>
             <h4 className="text-center">Students of Class One</h4>

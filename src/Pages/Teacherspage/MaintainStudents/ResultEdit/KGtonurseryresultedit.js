@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import {Button, Col, Form, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import useAuth from '../../../../Context/useAuth';
+import Principalnavbar from '../../../Principalpages/Principalnavbar/Principalnavbar';
 import Dashboardnav from '../../Maintainance/Dashboardnav';
 import './resultedit.css'
 const KGtonurseryresultedit = () => {
     const {id} = useParams();
-   
+    const {user}  = useAuth()
     const [result, setResult] = useState({})
     useEffect(() => {
       fetch(`http://localhost:5000/resultedit/${id}`)
@@ -187,7 +189,7 @@ const KGtonurseryresultedit = () => {
   }
     return (
       <div className="container-fluid">
-        <Dashboardnav></Dashboardnav>
+     { user.email === 'principal@gmail.com' ? <Principalnavbar></Principalnavbar> : <Dashboardnav></Dashboardnav>}
         <Form onSubmit={ResultSubmitHandler} className="p-3 addresultform">
       <h4 className="fw-bold text-primary text-center my-4">Edit Student Result</h4>
 

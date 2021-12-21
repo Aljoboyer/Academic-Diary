@@ -16,14 +16,14 @@
     font-weight: 400;
 }
 .usernav{
-    background-color: #202020;
+    background-color: #cecbcb;
 }
 .navtext{
     color: #fff;
 }
 .abouttitle{
     color: rgb(18, 18, 67);
-    font-size: 35px;
+    font-size: 60px;
     font-weight: bold;
 }
 .spans{
@@ -55,8 +55,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    width: 1500px;
-    height: 700px;
+
 }
 
 .footer{

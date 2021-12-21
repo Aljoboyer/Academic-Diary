@@ -1,7 +1,9 @@
 import React from 'react';
 import { useEffect , useState} from 'react';
-import {  Row } from 'react-bootstrap';
+import {  Row, Spinner } from 'react-bootstrap';
 import {  useParams } from 'react-router-dom';
+import useAuth from '../../../Context/useAuth';
+import Principalnavbar from '../../Principalpages/Principalnavbar/Principalnavbar';
 import Dashboardnav from '../Maintainance/Dashboardnav';
 import Firsttermallresult from './Termwiseresult/Firsttermallresult';
 import Secondtermallresult from './Termwiseresult/Secondtermallresult';
@@ -9,7 +11,9 @@ import Thirdtermallresult from './Termwiseresult/Thirdtermallresult';
 
 const Individualresult = () => {
     const {id} = useParams()
-    const [results, setResults] = useState()
+    const [results, setResults] = useState();
+    const {user}  = useAuth()
+
     useEffect(() => {
         fetch(`http://localhost:5000/getindividualresult/${id}`)
         .then(res => res.json())
@@ -22,11 +26,11 @@ const Individualresult = () => {
     const third = results?.find(result => result.term === 'Third-Term');
 
     const newresult = {first, second, third};
-    console.log('id',id)
-    console.log('fromt individual results',results)
+
     return (
         <div className="container-fluid">
-            <Dashboardnav></Dashboardnav>
+              { user.email === 'principal@gmail.com' ? <Principalnavbar></Principalnavbar> : <Dashboardnav></Dashboardnav>}
+
           {
               results?.length > 0 ?   <Row>
               {
@@ -38,7 +42,7 @@ const Individualresult = () => {
               {
               newresult?.third?.term === 'Third-Term' && <Thirdtermallresult result={newresult.third}></Thirdtermallresult>
               }
-          </Row> : "Hi"
+          </Row> : <Spinner animation="border" />
           }
         </div>
     );

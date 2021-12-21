@@ -1,52 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import Maintainteacher from './Maintainteacher';
 
 const Maintainteachers = () => {
+    const [teachers, setTeachers] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/getteacher')
+        .then(res => res.json())
+        .then(data => setTeachers(data))
+    },[])
+
     return (
         <div className="container-fluid">
             <Row>
-            <h4 className="text-center">Teachers Of Schools</h4>
+            <h4 className="text-center fw-bold text-primary my-4">Teachers Of Schools</h4>
             <Table striped bordered hover responsive="sm">
                 <thead>
                     <tr>
                     <th>Teacher Name</th>
-                    <th>Teacher ID</th>
+                    <th>Teacher Email</th>
+                    <th>Teacher Phone</th>
+                    <th>Teacher NID No</th>
+                    <th>Teacher Class</th>
                     <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <td>Teacher-1</td>
-                    <td>1</td>
-                    <td><Link to="/maintainTeacher"><button className="btn btn-primary">Remove Teacher</button></Link></td>
-                    </tr>
-                    <tr>
-                    <td>Teacher-2</td>
-                    <td>2</td>
-                    <td><button className="btn btn-primary">Remove Teacher</button></td>
-                    </tr>
-                    <tr>
-                    <td>Teacher-3</td>
-                    <td>3</td>
-                    <td><button className="btn btn-primary">Remove Teacher</button></td>
-                    </tr>
-
-                    <tr>
-                    <td>Teacher-4</td>
-                    <td>4</td>
-                    <td><button className="btn btn-primary">Remove Teacher</button></td>
-                    </tr>
-                    <tr>
-                    <td>Teacher-5</td>
-                    <td>5</td>
-                    <td><button className="btn btn-primary">Remove Teacher</button></td>
-                    </tr>
-                    <tr>
-                    <td>Teacher-6</td>
-                    <td>6</td>
-                    <td><button className="btn btn-primary">Remove Teacher</button></td>
-                    </tr>
+                   {
+                       teachers?.map(teacher =>
+                       <Maintainteacher key={teacher._id} teacher={teacher}></Maintainteacher>)
+                   }
                 </tbody>
             </Table>
         </Row>  

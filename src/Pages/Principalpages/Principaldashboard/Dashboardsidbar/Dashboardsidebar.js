@@ -15,7 +15,10 @@ const Dashboardsidebar = () => {
  
         history.push( `${url}/${rut}`, {state: {sectionclass}})
     }
-
+    //this route going to payment check
+    const PaymentCheck = (rut,studentclass) => {
+        history.push( `${url}/${rut}`, {state: studentclass})
+    }
     return (
         <ListGroup className="text-center">
         <ListGroup.Item action variant="secondary">
@@ -71,6 +74,7 @@ const Dashboardsidebar = () => {
                     
 
         </ListGroup.Item>
+
         <ListGroup.Item action variant="secondary">
         <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -82,6 +86,7 @@ const Dashboardsidebar = () => {
                 </Dropdown.Menu>
             </Dropdown>
         </ListGroup.Item>
+
         <ListGroup.Item action variant="secondary">
              <Dropdown>
                  
@@ -134,7 +139,40 @@ const Dashboardsidebar = () => {
         </ListGroup.Item>
 
         <ListGroup.Item action variant="secondary">
-        <Link className="homelink" to={`${url}/paymentstatus`}><h4 className="fw-bold text-center ">Check Payment</h4></Link>
+        <Link className="homelink" to={`${url}/paymentupload`}><button className="btn btn-success">Add Payments</button></Link>
+        </ListGroup.Item>
+
+         <ListGroup.Item action variant="secondary">
+            <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                   Student Payment Status
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                <Dropdown.Item  onClick={() => PaymentCheck('paymentstatus',
+                'KG')} >KG</Dropdown.Item>
+
+                 <Dropdown.Item  onClick={() => PaymentCheck('paymentstatus',
+                'Nursery')} >Nursery</Dropdown.Item>
+
+                <Dropdown.Item  onClick={() => PaymentCheck('paymentstatus',
+                'Class-One')} >Class-1</Dropdown.Item>
+
+                 <Dropdown.Item  onClick={() => PaymentCheck('paymentstatus',
+                'Class-Two')} >Class-2</Dropdown.Item>
+
+                 <Dropdown.Item  onClick={() => PaymentCheck('paymentstatus',
+                'Class-Three')} >Class-3</Dropdown.Item>
+               
+                <Dropdown.Item onClick={() => PaymentCheck('paymentstatus',
+                'Class-Four')} >Class-4</Dropdown.Item>
+
+                
+                <Dropdown.Item  onClick={() => PaymentCheck('paymentstatus',
+                'Class-Five')} >Class-5</Dropdown.Item>
+              
+                 </Dropdown.Menu>
+            </Dropdown>
         </ListGroup.Item>
      </ListGroup>
     );

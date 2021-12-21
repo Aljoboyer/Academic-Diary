@@ -9,7 +9,6 @@ import Registerstudent from '../../Teacherspage/Registerstudent/Registerstudent'
 import Addresult from '../../Teacherspage/Addstudentresult/Addresult';
 import Classroutine from '../../Teacherspage/Routinepages/Classroutine';
 import Examroutine from '../../Teacherspage/Routinepages/Examroutine';
-import Paymentstatus from '../../Teacherspage/Paymentcheckpage/Paymentstatus';
 import Addteachers from '../Addteachers/Addteachers';
 import Dashboardsidebar from './Dashboardsidbar/Dashboardsidebar';
 import Principalnavbar from '../Principalnavbar/Principalnavbar';
@@ -18,6 +17,8 @@ import Addstudents from '../Addstudent/Addstudents';
 import Addresultforonetofour from '../../Teacherspage/Addstudentresult/Addresultforonetofour';
 import Allstduent from '../../Teacherspage/MaintainStudents/Allstduent/Allstduent';
 import Addresultfive from '../../Teacherspage/Addstudentresult/Addresultfive';
+import Paymentupload from '../Paymentupload/Paymentupload';
+import Paymentstatus from '../Paymentcheckpage/Paymentstatus';
 
 const Principaldashboard = () => {
     let { path } = useRouteMatch();
@@ -62,6 +63,9 @@ const Principaldashboard = () => {
 
                     <Route path={`${path}/addresultfive`}>
                         <Addresultfive></Addresultfive>
+                    </Route>
+                    <Route path={`${path}/paymentupload`}>
+                        <Paymentupload></Paymentupload>
                     </Route>
                 </Col>
                 <Col lg={2} sm={12} md={6}>

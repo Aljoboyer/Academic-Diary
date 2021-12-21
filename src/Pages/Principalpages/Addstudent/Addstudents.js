@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Button, Col, Form, Row } from 'react-bootstrap';
 import useAuth from '../../../Context/useAuth';
-
+import Swal from 'sweetalert2'
 
 const Addstudents = () => {
     const [regdata, setRegData] = useState({})
@@ -52,7 +52,11 @@ const Addstudents = () => {
               .then(data => {
                 if(data)
                 {
-                  alert('student add successfully')
+                  Swal.fire(
+                    'Student Added Successfully',
+                    '',
+                    'success'
+                  )
                 }
               })
           }
