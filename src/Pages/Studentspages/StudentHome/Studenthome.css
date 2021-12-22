@@ -1,0 +1,8 @@
+.studentcolam{
+    height: 600px;
+    overflow: scroll;
+}
+.detailsbtn{
+    border: solid darkblue 5px;
+
+}

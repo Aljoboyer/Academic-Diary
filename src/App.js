@@ -23,6 +23,8 @@ import Individualpaymentcheck from './Pages/Principalpages/Paymentcheckpage/Indi
 import Facilities from './Pages/AlluserHomePages/Facilities/Facilities';
 import Academic from './Pages/AlluserHomePages/Academic/Academic';
 import Admission from './Pages/AlluserHomePages/Admission/Admission';
+import Anouncements from './Pages/Principalpages/Anouncements/Anouncements'
+import Contactus from './Pages/AlluserHomePages/Contactus/Contactus'
 function App() {
   return (
     <div className="container-fluid">
@@ -32,6 +34,9 @@ function App() {
             <Switch>
               <Route exact path="/">
                 <Userhome></Userhome>
+                </Route>
+                <Route exact path='/contactus'>
+                  <Contactus></Contactus>
                 </Route>
                 <Route exact path="/facilities">
                   <Facilities></Facilities>
@@ -84,7 +89,9 @@ function App() {
               <Route exact path="/princpalpublishnotice">
                 <Princpalpublishnotice></Princpalpublishnotice>
               </Route>
-              
+              <Route exact path='/anouncements'>
+                <Anouncements></Anouncements>
+              </Route>
             </Switch>
         </Router>
         </Authprovider>

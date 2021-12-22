@@ -23,7 +23,13 @@ const Publishnotice = () => {
         setEditresult(newdata)
     }
     const onBlurHandler = e => {
-        setFieldnotice(e.target.value)
+        const name = e.target.name;
+        const val = e.target.value;
+
+        const newdata = {...fieldnotice};
+        newdata[name] = val;
+        setFieldnotice(newdata)
+
     }
 
     useEffect(() => {
@@ -34,7 +40,9 @@ const Publishnotice = () => {
 
     const NoticeHandler = e =>{
         e.preventDefault();
-        const newnotice = {studentnotice: fieldnotice};
+        const dates = new Date().toLocaleDateString()
+        const newnotice = {title: fieldnotice.title, description: fieldnotice.description, publishdate: dates};
+
 
         fetch('http://localhost:5000/studentnotice',{
             method: 'POST',
@@ -116,8 +124,12 @@ const Publishnotice = () => {
                 <Col lg={8} className="publishnoticehhome p-4">
                 <Form onSubmit={NoticeHandler}>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Notice Title</Form.Label>
+                    <Form.Control name='title' onBlur={onBlurHandler} type='text' />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Write Notice Here</Form.Label>
-                    <Form.Control onBlur={onBlurHandler} as="textarea" rows={3} />
+                    <Form.Control name='description' onBlur={onBlurHandler} as="textarea" rows={3} />
                 </Form.Group>
                 <button type="submit" className="btn btn-dark text-warning">Publish</button>
             </Form>
@@ -149,8 +161,12 @@ const Publishnotice = () => {
            <Row  className="d-flex justify-content-center publishnoticehhome p-4 my-4">
                 <Form onSubmit={Edithanlder}>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Notice Title</Form.Label>
+                    <Form.Control value={editresult.title} name='title' onChange={OnChangeHandler}  type='text' />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Edit Notice Here</Form.Label>
-                    <Form.Control name="studentnotice" value={editresult.studentnotice} onChange={OnChangeHandler} as="textarea" rows={4} />
+                    <Form.Control name="description" value={editresult.description} onChange={OnChangeHandler} as="textarea" rows={4} />
                 </Form.Group>
                 <button type="submit" className="btn btn-dark text-warning">Publish</button>
             </Form>

@@ -15,7 +15,9 @@ const Teachersnoticeboard = () => {
             {
                 notices?.map(notice =>
                 <Col lg={7} className="principalnotice my-3 bg-warning text-center">
-                    <h5>{notice?.teachernotice}</h5>
+                    <h5>{notice?.title}</h5>
+                    <p>{notice?.description}</p>
+                    <p className='text-muted'>{notice?.publishdate}</p>
                 </Col>)
             }
         </Row>

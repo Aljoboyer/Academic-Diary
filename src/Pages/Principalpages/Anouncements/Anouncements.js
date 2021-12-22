@@ -3,60 +3,60 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { Row, Form, Col, Modal , Button} from 'react-bootstrap';
 import Principalnavbar from '../Principalnavbar/Principalnavbar';
-import Principalallnotice from './Principalallnotice';
+import Anouncement from './Anouncement';
 import Swal from 'sweetalert2'
 
-const Princpalpublishnotice = () => {
+const Anouncements = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const [editresult, setEditresult] = useState({})
+    const [editanouncement, setEditanouncement] = useState({})
 
-    const [notices, setNotices] = useState([]);
-    const [fieldnotice, setFieldnotice] = useState('')
+    const [anouncements, setAnouncements] = useState([]);
+    const [fieldanouncement, setFieldanouncement] = useState('')
     const [demo, setDemo] = useState([]);
 
     const OnChangeHandler = e => {
         const name = e.target.name;
         const val = e.target.value;
 
-        const newdata = {...editresult};
+        const newdata = {...editanouncement};
         newdata[name] = val;
-        setEditresult(newdata)
+        setEditanouncement(newdata)
     }
 
     const onBlurHandler = e => {
         const name = e.target.name;
         const val = e.target.value;
 
-        const newdata = {...fieldnotice};
+        const newdata = {...fieldanouncement};
         newdata[name] = val;
-        setFieldnotice(newdata)
+        setFieldanouncement(newdata)
     }
 
     useEffect(() => {
-        fetch('http://localhost:5000/gettechernotice')
+        fetch('http://localhost:5000/getAnouncement')
         .then(res => res.json())
-        .then(data => setNotices(data))
+        .then(data => setAnouncements(data))
     },[demo])
 
-    const NoticeHandler = e =>{
+    const AnouncemetnPublishHandler = e =>{
         e.preventDefault();
         const dates = new Date().toLocaleDateString()
-        const newnotice = {title: fieldnotice.title, description: fieldnotice.description, publishdate: dates};
+        const newanouncement = {title: fieldanouncement.title, description: fieldanouncement.description, publishdate: dates};
 
-        fetch('http://localhost:5000/principalnotice',{
+        fetch('http://localhost:5000/publishanouncement',{
             method: 'POST',
             headers:{
                 'content-type':'application/json'
             },
-            body: JSON.stringify(newnotice)
+            body: JSON.stringify(newanouncement)
         })
         .then(res => res.json())
         .then(data => {
             if(data.insertedId)
             {
                 e.target.reset()
-                 setDemo(notices)
+                 setDemo(anouncements)
                  Swal.fire(
                     'Notice Published Successfully',
                     '',
@@ -66,15 +66,15 @@ const Princpalpublishnotice = () => {
         })
     }
     
-    const NoticeDeleteHandler = (id) => {
-        fetch(`http://localhost:5000/teacherdeletenotice/${id}`,{
+    const AnouncementDeleteHandler = (id) => {
+        fetch(`http://localhost:5000/anouncementdelete/${id}`,{
             method: 'DELETE'
         })
         .then(res => res.json())
         .then(data => {
             if(data.deletedCount > 0)
             {
-                setDemo(notices)
+                setDemo(anouncements)
                 Swal.fire(
                     'Notice Successfully Deleted',
                     '',
@@ -84,12 +84,12 @@ const Princpalpublishnotice = () => {
         })
     }
 
-    const NoticeEditHandler = (id) =>{
+    const AnouncementEditHandler = (id) =>{
         
-        fetch(`http://localhost:5000/geteditnotice/${id}`)
+        fetch(`http://localhost:5000/getEditAnouncement/${id}`)
         .then(res => res.json())
         .then(data => {
-            setEditresult(data)
+            setEditanouncement(data)
             setShow(true)
         })
     }
@@ -97,12 +97,12 @@ const Princpalpublishnotice = () => {
     const Edithanlder = (e) => {
         e.preventDefault()
       
-        fetch(`http://localhost:5000/puteditednotice/${editresult._id}`,{
+        fetch(`http://localhost:5000/putEditedAnouncement/${editanouncement._id}`,{
             method: 'PUT',
             headers: {
               'content-type':'application/json'
             },
-            body: JSON.stringify(editresult)
+            body: JSON.stringify(editanouncement)
         })
         .then(res => res.json())
         .then(data => {
@@ -114,7 +114,7 @@ const Princpalpublishnotice = () => {
                 '',
                 'success'
               )
-              setDemo(notices)
+              setDemo(anouncements)
             }
         })
     }
@@ -124,13 +124,13 @@ const Princpalpublishnotice = () => {
         <Row className="container  justify-content-center publishnotice">
            <Row  className="d-flex justify-content-center  p-4 my-4">
                 <Col lg={8} className="publishnoticehhome p-4">
-                <Form onSubmit={NoticeHandler}>
+                <Form onSubmit={AnouncemetnPublishHandler}>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Notice Title</Form.Label>
+                    <Form.Label>Announcement  Title</Form.Label>
                     <Form.Control name='title' onBlur={onBlurHandler} type='text' />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Write Notice Here</Form.Label>
+                    <Form.Label>Write Announcement  Here</Form.Label>
                     <Form.Control name='description' onBlur={onBlurHandler} as="textarea" rows={3} />
                 </Form.Group>
                 <button type="submit" className="btn btn-dark text-warning">Publish</button>
@@ -139,11 +139,11 @@ const Princpalpublishnotice = () => {
            </Row>
              
               <Row className="justify-content-center">
-              <h3 className="text-center fw-bold text-primary my-4">Manage Notice</h3>
+              <h3 className="text-center fw-bold text-primary my-4">Manage Announcement </h3>
                 {
-                    notices.length > 0 && <>{
-                        notices?.map(notice =>
-                        <Principalallnotice key={notice._id} NoticeEditHandler={NoticeEditHandler} NoticeDeleteHandler={NoticeDeleteHandler} notice={notice} ></Principalallnotice>)
+                    anouncements.length > 0 && <>{
+                        anouncements?.map(anouncement =>
+                        <Anouncement key={anouncement._id} AnouncementEditHandler={AnouncementEditHandler} AnouncementDeleteHandler={AnouncementDeleteHandler} anouncement={anouncement} ></Anouncement>)
                     }</>
                 }
               </Row>
@@ -164,12 +164,12 @@ const Princpalpublishnotice = () => {
            <Row  className="d-flex justify-content-center publishnoticehhome p-4 my-4">
                 <Form onSubmit={Edithanlder}>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Notice Title</Form.Label>
-                    <Form.Control name='title' value={editresult.title} onChange={OnChangeHandler} type='text' />
+                    <Form.Label>Edit Anouncement Here</Form.Label>
+                    <Form.Control name="title" value={editanouncement.title} onChange={OnChangeHandler} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Edit Notice Here</Form.Label>
-                    <Form.Control name="description" value={editresult.description} onChange={OnChangeHandler} as="textarea" rows={4} />
+                    <Form.Label>Edit Anouncement Here</Form.Label>
+                    <Form.Control name="description" value={editanouncement.description} onChange={OnChangeHandler} as="textarea" rows={4} />
                 </Form.Group>
                 <button type="submit" className="btn btn-dark text-warning">Publish</button>
             </Form>
@@ -185,4 +185,4 @@ const Princpalpublishnotice = () => {
     );
 };
 
-export default Princpalpublishnotice;
+export default Anouncements;

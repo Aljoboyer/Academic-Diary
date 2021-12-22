@@ -61,3 +61,17 @@
 .footer{
     background-color: rgb(55, 53, 53);
 }
+.loginbtn{
+    background-color: #86bc42;
+}
+.anouncementtitle{
+    color: rgb(18, 18, 67);
+}
+.anouncementcolam{
+    border: solid #86bc42 3px;
+    height: 520px;
+    overflow: scroll;
+}
+.regborder{
+    border: solid #86bc42 6px;
+}

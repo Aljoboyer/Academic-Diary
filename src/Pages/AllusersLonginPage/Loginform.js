@@ -24,6 +24,7 @@ const Loginform = ({role}) => {
         fetch(`http://localhost:5000/checkuser?email=${logindata.email}`)
         .then(res => res.json())
         .then(data => {
+            console.log(data)
             if(data.userrole === 'Principal' && role === 'Principal')
             {
                 LoginUser(logindata.email, logindata.password)

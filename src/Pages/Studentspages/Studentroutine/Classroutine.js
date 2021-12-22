@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Table } from 'react-bootstrap';
+import { Col, Row, Spinner } from 'react-bootstrap';
+import classroutines from '../../../images/classroutine.jpg'
 
 const Classroutine = () => {
     const [routine, setRoutine] = useState([]);
@@ -14,13 +15,15 @@ const Classroutine = () => {
     const a = routine.forEach(c => {
         obj = {...c}
     })
- console.log()
+
     return (
-        <Row className="container-fluid">
-            <h1 className="text-center my-4">Class Routine</h1>
+        <Row className="container-fluid justify-content-center my-4">
+            <h1 className="text-center my-4 fw-bold">Class Routine</h1>
+            <Col lg={8}>
             {
-                routine?.length && <img className="images" src={`data:image/jpeg;base64,${obj.img}`} alt="" />
+                routine?.length ? <>  <a href={classroutines} target="blank" download><button className="detailsbtn p-2 fw-bold mb-2">Download Class Routine</button></a> <img className="" src={`data:image/jpeg;base64,${obj.img}`} alt="" /> </> :  <Spinner animation="border" />
             }
+            </Col>
            
         </Row>
     );

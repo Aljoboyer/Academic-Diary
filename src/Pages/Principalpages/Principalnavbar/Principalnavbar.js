@@ -16,7 +16,9 @@ const Principalnavbar = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link className="fw-bold fs-6 text-dark" as={Link} to="/princpalpublishnotice">Publish Notice For Teachers</Nav.Link>
+            <Nav.Link className="fw-bold fs-6 text-dark mx-2" as={Link} to="/princpalpublishnotice">Publish Notice For Teachers</Nav.Link>
+
+            <Nav.Link className="fw-bold fs-6 text-dark mx-4" as={Link} to="/anouncements">Declare An Anouncement</Nav.Link>
           </Nav>
           <Nav>
             {

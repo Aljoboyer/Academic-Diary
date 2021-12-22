@@ -8,7 +8,7 @@ import Procedureandpolicy from './Procedureandpolicy';
 import Admissionform from './Admissionform';
 import Howtoapply from './Howtoapply';
 import Whocanapply from './Whocanapply';
-import Helpdes from './Helpdes';
+
 const Admission = () => {
     const {state} = useLocation()
     return (
@@ -24,7 +24,7 @@ const Admission = () => {
         {state.state === 'Form' && <Admissionform></Admissionform>}
         {state.state === 'How' && <Howtoapply></Howtoapply>}
         {state.state === 'Who' && <Whocanapply></Whocanapply>}
-        {state.state === 'Desk' && <Helpdes></Helpdes>}
+
         <Alluserfooter></Alluserfooter>
         </div>
     );
