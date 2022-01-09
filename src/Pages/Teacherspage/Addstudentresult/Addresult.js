@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {Button, Col, Form, Row } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 import useAuth from '../../../Context/useAuth';
 const Addresult = () => {
   const {user} = useAuth()
@@ -176,7 +177,11 @@ const Addresult = () => {
         .then(res => res.json())
         .then(data => {
           if(data.insertedId){
-            alert('result added success')
+            Swal.fire(
+              'Result Added Successfully',
+              '',
+              'success'
+            )
             e.target.reset()
             console.log(data)
           }

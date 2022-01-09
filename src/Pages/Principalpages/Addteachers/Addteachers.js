@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {Button, Col, Form, Row } from 'react-bootstrap';
 import useAuth from '../../../Context/useAuth';
+import Swal from 'sweetalert2'
 const Addteachers = () => {
     const [regdata, setRegData] = useState({})
     const {RegisterUser, setUser} = useAuth();
@@ -49,7 +50,11 @@ const Addteachers = () => {
         .then(data => {
           if(data)
           {
-            alert('teacher add successfully')
+            Swal.fire(
+              'Teacher Added Successfully',
+              '',
+              'success'
+            )
           }
         })
     }
@@ -73,8 +78,8 @@ const Addteachers = () => {
           <Form.Group as={Col} controlId="formGridState">
         <Form.Label className="fw-bold fs-6">Section</Form.Label>
         <Form.Select required  name="teachersection" onBlur={OnblurHandler} defaultValue="Choose Section">
-            <option>Section-A</option>
-            <option>Section-B</option>
+            <option value='Section-A'>Section-A</option>
+            <option value='Section-B'>Section-B</option>
         </Form.Select>
           </Form.Group>
           </Row>
@@ -88,8 +93,8 @@ const Addteachers = () => {
               <Form.Group as={Col} controlId="formGridState">
               <Form.Label className="fw-bold fs-6">Role</Form.Label>
               <Form.Select  name="role" onBlur={OnblurHandler} defaultValue="Choose Role">
-                  <option>Teacher</option>
-                  <option>Principal</option>
+                  <option value='Teacher'>Teacher</option>
+                  <option value='Principal'>Principal</option>
               </Form.Select>
              </Form.Group>
           </Row>

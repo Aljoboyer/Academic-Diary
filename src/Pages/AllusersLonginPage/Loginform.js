@@ -5,6 +5,7 @@ import studentimg from '../../images/papperpencil.jpg';
 import principalimg from '../../images/a-bg.jpg'
 import { useHistory } from 'react-router';
 import useAuth from '../../Context/useAuth';
+import Swal from 'sweetalert2';
 
 const Loginform = ({role}) => {
     const [logindata, setLogindata] = useState({});
@@ -75,11 +76,12 @@ const Loginform = ({role}) => {
                     });
                 
             }
-
-            
-
             else{
-                alert('Sorry Unauthorised User')
+                Swal.fire(
+                    'Sorry Unauthorised User',
+                    '',
+                    'error'
+                  )
             }
             e.target.reset()
         })

@@ -29,7 +29,7 @@ const Studentdashboardsidebar = () => {
         </ListGroup.Item>
         <ListGroup.Item action variant="dark">
             <Dropdown>
-                <Dropdown.Toggle variant="warning" id="dropdown-basic">
+                <Dropdown.Toggle className='fw-bold' variant="warning" id="dropdown-basic">
                    See Result
                 </Dropdown.Toggle>
 
@@ -41,13 +41,13 @@ const Studentdashboardsidebar = () => {
             </Dropdown>
         </ListGroup.Item>
         <ListGroup.Item action variant="dark">
-           <Link to={`${url}/classroutine`}> <button className="btn btn-warning">Class Routine</button></Link>
+           <Link to={`${url}/classroutine`}> <button className="btn btn-warning fw-bold">Class Routine</button></Link>
         </ListGroup.Item>
         <ListGroup.Item action variant="dark">
-           <Link to={`${url}/examroutine`}> <button className="btn btn-warning">Exam Routine</button></Link>
+           <Link to={`${url}/examroutine`}> <button className="btn btn-warning fw-bold">Exam Routine</button></Link>
         </ListGroup.Item>
         <ListGroup.Item action variant="warning">
-           <Link to={`${url}/studenttranscript`}> <button className="btn btn-warning">Transcript</button></Link>
+           <Link to={`${url}/studenttranscript`}> <button className="btn btn-warning fw-bold">Transcript</button></Link>
         </ListGroup.Item>
 
         <ListGroup.Item action variant="secondary">

@@ -243,7 +243,7 @@ const Thirtermresulttable = () => {
                 </Table>
                 </Row>
             }
-        </> : <h2 className="fw-bold text-warning my-4 text-center">Result is Not Available</h2>
+        </> : <h2 className="fw-bold text-primary my-4 text-center">Result is Not Available</h2>
         }
        </>
 )

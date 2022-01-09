@@ -18,14 +18,12 @@ const Firsttermesultsheet = () => {
                 <Firsttermresult></Firsttermresult>
                 </Col>
             </Row>
-        </div>
-       
-       <ReactToPdf  targetRef={ref} filename="post.pdf">
+        </div>  
+        <ReactToPdf  targetRef={ref} filename="post.pdf">
         {({toPdf}) => (
             <button  className="btn btn-primary" onClick={toPdf}>Download Result Sheet</button>
         )}
         </ReactToPdf >
-    
         </div>
     );
 

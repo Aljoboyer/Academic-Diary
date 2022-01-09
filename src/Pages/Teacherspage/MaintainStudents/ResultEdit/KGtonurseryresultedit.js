@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import {Button, Col, Form, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import useAuth from '../../../../Context/useAuth';
 import Principalnavbar from '../../../Principalpages/Principalnavbar/Principalnavbar';
 import Dashboardnav from '../../Maintainance/Dashboardnav';
@@ -184,7 +185,11 @@ const KGtonurseryresultedit = () => {
     .then(res => res.json())
     .then(data => {
       console.log(data);
-      alert('Inserted')
+      Swal.fire(
+        'Result Edited Successfully',
+        '',
+        'success'
+      )
     })
   }
     return (

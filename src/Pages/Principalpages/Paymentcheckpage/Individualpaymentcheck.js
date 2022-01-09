@@ -41,7 +41,7 @@ const Individualpaymentcheck = () => {
                             <td>{payment?.amount}</td>
                             <td>{payment?.lastdate}</td>
                             <td>{payment?.publishdate}</td>
-                            <td>{payment?.paymentStatus === 'PAID' ? payment.Status : 'PENDING'} </td>
+                            <td>{payment?.paymentStatus === 'PAID' ? payment.paymentStatus : 'PENDING'} </td>
                             <td>{payment?.tran_id}</td>
                          </tr>
                         )

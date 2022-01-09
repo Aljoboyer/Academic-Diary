@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {Button, Col, Form, Row } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 import useAuth from '../../../Context/useAuth';
 import './regstudent.css';
 
@@ -52,7 +53,11 @@ const Registerstudent = () => {
             .then(data => {
               if(data)
               {
-                alert('student add successfully')
+                Swal.fire(
+                  'Student Added Successfully',
+                  '',
+                  'success'
+                )
               }
             })
         }
