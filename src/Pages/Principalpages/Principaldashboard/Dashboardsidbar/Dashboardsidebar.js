@@ -174,6 +174,9 @@ const Dashboardsidebar = () => {
                  </Dropdown.Menu>
             </Dropdown>
         </ListGroup.Item>
+        <ListGroup.Item action variant="secondary">
+        <Link className="homelink" to={`${url}/AdmissionFormCheck`}><button className="btn btn-success">Check Addmission Form</button></Link>
+        </ListGroup.Item>
      </ListGroup>
     );
 };

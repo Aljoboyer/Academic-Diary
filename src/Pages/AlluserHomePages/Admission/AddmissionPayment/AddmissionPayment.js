@@ -1,41 +1,27 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { Col, Row,Modal, Button, Form } from 'react-bootstrap';
+import Usernavber from '../../Usersnavber/Usernavber';
+import logo from '../../../../images/shoollogo.jpg';
+import bikashlogo from '../../../../images/bikashformlogo.png';
 import { useState } from 'react';
-import { Col, Row, Modal, Form, Button } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import bikash from '../../../../images/bikashlogo.png';
-import '../Payment.css';
-import bikashformlogo from '../../../../images/bikashformlogo.png';
 
-const Bikashpayment = () => {
+const AddmissionPayment = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const [paymentdata, setPaymentdata] = useState({});
     const {state} = useLocation();
     const [num, setNum] = useState('');
-
-    useEffect(() => {
-        if(state.state.id){
-            fetch(`http://localhost:5000/getpaymentmonth/${state.state.id}`)
-        .then(res => res.json())
-        .then(data => setPaymentdata(data))
-        }
-        else{
-            return
-        }
-    },[state.state.id])
-
+    const admissiondata = state.state
 
     const PaymentHandler = (e) => {
         e.preventDefault()
         const paymentDetails = {
-            total_amount: parseInt(paymentdata.amount),
-            id: paymentdata._id,
-            cus_name: paymentdata.studentname,
-            cus_email: paymentdata.email
+            total_amount: parseInt(215),
+            admissiondata
         }
         if(num.length >= 11){
-            fetch('http://localhost:5000/init', {
+            fetch('http://localhost:5000/addmissionpayment', {
             method: 'POST',
             headers:{
                 'content-type' : 'application/json'
@@ -56,17 +42,23 @@ const Bikashpayment = () => {
               )
         }
     }
-
-    const OnBlurHandler = e => {
-        setNum(e.target.value)
-    }
     return (
-        <Row className='container-fluid d-flex justify-content-center align-items-center'>
-            <Col lg={6} md={9} sm={12}>
-                <img onClick={() => setShow(true)} className='img-fluid bikashimg' src={bikash} alt="" />
-            </Col>
+        <div className='container-fluid'>
+            <Row className='d-flex justify-content-center'>
+                <Col lg={2}>
+                    <img className='w-75' src={logo} alt="" />
+                </Col>
+                <h2 className='fw-bold text-primary text-center mb-2'>Chittagong City Academy School</h2>
+            </Row>
+                <Usernavber></Usernavber>
+            <Row className="d-flex justify-content-center my-4">
+                <Col className='text-center' lg={6} md={12} sm={12}>
+                    <h4 className="anouncementtitle fw-bold">Please Pay 215 Taka . To Fillup the form Successfully</h4>
+                    <button  onClick={() => setShow(true)} className='btn bikashbtn text-light fw-bold fs-4'> <img className='w-25' src={bikashlogo} alt="" /> PAY-215Taka</button>
+                </Col>
+            </Row>
 
-    {/* -----------------MODAL----------- */}
+            {/* -----------------MODAL----------- */}
     <Modal
         show={show}
         onHide={handleClose}
@@ -77,12 +69,12 @@ const Bikashpayment = () => {
           <Modal.Title className='modaltitle'>Pay Fee With Bikash</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <img className='img-fluid' src={bikashformlogo} alt="" />
+            <img className='img-fluid' src={bikashlogo} alt="" />
            <Row  className="d-flex justify-content-center  p-4 my-4">
                 <Form onSubmit={PaymentHandler}>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Enter Your Number</Form.Label>
-                    <Form.Control name="teachernotice" type='number' placeholder='Enter Your Number' onBlur={OnBlurHandler} rows={4} />
+                    <Form.Control name="teachernotice" type='number' placeholder='Enter Your Number' onBlur={(e) => setNum(e.target.value)} rows={4} />
                 </Form.Group>
                 <button type="submit" className="btn text-light fw-bold fs-6 bikashbtn">ENTER</button>
             </Form>
@@ -94,8 +86,8 @@ const Bikashpayment = () => {
           </Button>
         </Modal.Footer>
     </Modal>
-</Row>
+        </div>
     );
 };
 
-export default Bikashpayment;
+export default AddmissionPayment;

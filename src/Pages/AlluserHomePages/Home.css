@@ -78,3 +78,9 @@
 .admissionForm{
     border: solid #86bc42 6px;
 }
+.formvalu{
+    text-decoration:underline;
+}
+.indvidualform{
+    border: black solid 2px;
+}

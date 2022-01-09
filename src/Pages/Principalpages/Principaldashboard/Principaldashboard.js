@@ -19,6 +19,7 @@ import Allstduent from '../../Teacherspage/MaintainStudents/Allstduent/Allstduen
 import Addresultfive from '../../Teacherspage/Addstudentresult/Addresultfive';
 import Paymentupload from '../Paymentupload/Paymentupload';
 import Paymentstatus from '../Paymentcheckpage/Paymentstatus';
+import AdmissionFormCheck from '../AdmissionFormCheck/AdmissionFormCheck';
 
 const Principaldashboard = () => {
     let { path } = useRouteMatch();
@@ -66,6 +67,9 @@ const Principaldashboard = () => {
                     </Route>
                     <Route path={`${path}/paymentupload`}>
                         <Paymentupload></Paymentupload>
+                    </Route>
+                    <Route path={`${path}/AdmissionFormCheck`}>
+                        <AdmissionFormCheck></AdmissionFormCheck>
                     </Route>
                 </Col>
                 <Col lg={2} sm={12} md={6}>

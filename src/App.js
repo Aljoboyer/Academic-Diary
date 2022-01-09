@@ -25,6 +25,9 @@ import Academic from './Pages/AlluserHomePages/Academic/Academic';
 import Admission from './Pages/AlluserHomePages/Admission/Admission';
 import Anouncements from './Pages/Principalpages/Anouncements/Anouncements'
 import Contactus from './Pages/AlluserHomePages/Contactus/Contactus'
+import AddmissionPayment from './Pages/AlluserHomePages/Admission/AddmissionPayment/AddmissionPayment';
+import AddmissionSuccess from './Pages/AlluserHomePages/Admission/AddmissionPayment/AddmissionSuccess';
+import IndividualFormCheck from './Pages/Principalpages/AdmissionFormCheck/IndividualFormCheck';
 function App() {
   return (
     <div className="container-fluid">
@@ -50,7 +53,17 @@ function App() {
                 <Route exact path="/alluserloginpage">
                   <Alluserloginpage></Alluserloginpage>
                 </Route>
+                <Route exact path="/AddmissionPayment">
+                    <AddmissionPayment></AddmissionPayment>
+                </Route>
+                <Route exact path="/AddmissionSuccess">
+                    <AddmissionSuccess></AddmissionSuccess>
+                </Route>
+                <Route exact path="/IndividualFormCheck/:id">
+                  <IndividualFormCheck></IndividualFormCheck>
+                </Route>
 
+            {/* -------------student dashboard----------- */}
             <Route  path="/studentdashboard">
               <Studentdashboard></Studentdashboard>
             </Route>

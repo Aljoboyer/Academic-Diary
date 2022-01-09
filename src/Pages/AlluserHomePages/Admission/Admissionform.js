@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import {Row, Col, Form} from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 const Admissionform = () => {
     const [admissionData, setAddmissionData] = useState({});
-
+    const history  = useHistory()
     const OnBlurHandler = e => {
         const addmissionName = e.target.name
         const addmissionValue = e.target.value
@@ -15,6 +16,7 @@ const Admissionform = () => {
 
     const AddmissionHandler = (e) => {
         e.preventDefault()
+        history.push('/AddmissionPayment', {state: admissionData})
     }
     return (
         <div className="container-fluid">
@@ -51,11 +53,11 @@ const Admissionform = () => {
                 <Row className='mb-3'>
                    <Form.Group as={Col} className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Label>Present Address</Form.Label>
-                        <Form.Control onBlur={OnBlurHandler} type="text" name='presentAddress' placeholder="Present Address" />
+                        <Form.Control as="textarea" onBlur={OnBlurHandler} type="text" name='presentAddress' placeholder="Present Address" />
                     </Form.Group>
                     <Form.Group as={Col} className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Label>Permanent Address</Form.Label>
-                        <Form.Control onBlur={OnBlurHandler} type="text" name='permanentAddress' placeholder="Permanent Address" />
+                        <Form.Control as="textarea"  onBlur={OnBlurHandler} type="text" name='permanentAddress' placeholder="Permanent Address" />
                     </Form.Group> 
                 </Row>
                 <Row className='mb-3'>
@@ -98,6 +100,16 @@ const Admissionform = () => {
                     <Form.Group as={Col} className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Label>Year</Form.Label>
                         <Form.Control onBlur={OnBlurHandler} type="text" name='previousYear' placeholder="Year" />
+                    </Form.Group>
+                </Row>
+                <Row className='mb-3'>
+                   <Form.Group as={Col} className="mb-3" controlId="exampleForm.ControlInput1">
+                        <Form.Label>Previous Institution Post Office</Form.Label>
+                        <Form.Control onBlur={OnBlurHandler} type="text" name='PreviousInstitutionPostOffice' placeholder="Previous Institution Post Office" />
+                    </Form.Group>
+                    <Form.Group as={Col} className="mb-3" controlId="exampleForm.ControlInput1">
+                        <Form.Label>Previous Institution District</Form.Label>
+                        <Form.Control onBlur={OnBlurHandler} type="text" name='PreviousInstitutionDistrict' placeholder="Previous Institution District" />
                     </Form.Group>
                 </Row>
                 <Row className='mb-3'>
