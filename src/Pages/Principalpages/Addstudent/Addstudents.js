@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 const Addstudents = () => {
     const [regdata, setRegData] = useState({})
     const {RegisterUser, setUser} = useAuth();
-
+   
     const OnblurHandler = e => {
         const fieldname = e.target.name;
         const fieldvalue = e.target.value;
@@ -25,7 +25,8 @@ const Addstudents = () => {
           setUser(user);
           
           SaveStudent(regdata.email, regdata.studentname, regdata.role, regdata.studentclass, regdata.studentsection,regdata.studentnid, regdata.studentphone, regdata.studentmothername, regdata.studentfathername, regdata.studentaddress, regdata.studentroll)
-  
+
+         
           e.target.reset()
           
       }).catch((error) => {
@@ -36,30 +37,31 @@ const Addstudents = () => {
       e.preventDefault()
     }
 
-         //saving student to database
-         const SaveStudent = (email, studentname, role, studentclass, studentsection, studentnid, studentphone, studentfather, studentmother, studentaddress, studentroll) => {
+    //saving student to database
+    const SaveStudent = (email, studentname, role, studentclass, studentsection, studentnid, studentphone, studentfather, studentmother, studentaddress, studentroll) => {
 
-            const studentdata = {email, studentname, role, studentclass, studentsection, studentnid, studentphone, studentfather, studentmother, studentaddress, studentroll}
-      
-              fetch('http://localhost:5000/useradd', {
-                  method: 'POST',
-                  headers: {
-                      'content-type':'application/json'
-                  },
-                  body: JSON.stringify(studentdata)
-              })
-              .then(res => res.json())
-              .then(data => {
-                if(data)
-                {
-                  Swal.fire(
-                    'Student Added Successfully',
-                    '',
-                    'success'
-                  )
-                }
-              })
+      const studentdata = {email, studentname, role, studentclass, studentsection, studentnid, studentphone, studentfather, studentmother, studentaddress, studentroll}
+
+        fetch('http://localhost:5000/useradd', {
+            method: 'POST',
+            headers: {
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(studentdata)
+        })
+        .then(res => res.json())
+        .then(data => {
+          if(data)
+          {
+            Swal.fire(
+              'Student Added Successfully',
+              '',
+              'success'
+            )
           }
+        })
+    }
+  
     return (
         <Form onSubmit={AddstudentsHandler} className="p-3 studentregform mt-4">
         <Row className="mb-3 ">

@@ -7,7 +7,16 @@ import './regstudent.css';
 const Registerstudent = () => {
   const [regdata, setRegData] = useState({})
   const {RegisterUser, setUser} = useAuth();
-
+    let sessionFee;
+      if(regdata.studentclass === 'KG' || regdata.studentclass === 'Nursery'){
+        sessionFee = 1500
+      }
+      else  if(regdata.studentclass === 'Class-One' || regdata.studentclass === 'Class-Two' || regdata.studentclass === 'Class-Three' ){
+        sessionFee = 2000
+      }
+      else  if(regdata.studentclass === 'Class-Four' || regdata.studentclass === 'Class-Five'){
+          sessionFee = 2500
+      }
   const OnblurHandler = e => {
       const fieldname = e.target.name;
       const fieldvalue = e.target.value;
@@ -26,9 +35,14 @@ const Registerstudent = () => {
         setUser(user);
         
         SaveStudent(regdata.email, regdata.studentname, regdata.role, regdata.studentclass, regdata.studentsection,regdata.studentnid, regdata.studentphone, regdata.studentmothername, regdata.studentfathername, regdata.studentaddress, regdata.studentroll)
-
-        e.target.reset()
         
+        SeessionFeeHandler(regdata.email, regdata.studentname, regdata.role, regdata.studentclass, regdata.studentsection,regdata.studentnid, regdata.studentphone, regdata.studentmothername, regdata.studentfathername, regdata.studentaddress, regdata.studentroll)
+        e.target.reset()
+        Swal.fire(
+          'Student Added Successfully',
+          '',
+          'success'
+        )
     }).catch((error) => {
          
         console.log('from register user', error.message)
@@ -61,6 +75,22 @@ const Registerstudent = () => {
               }
             })
         }
+          //adding student session fee
+    const SeessionFeeHandler = (email, studentname, role, studentclass, studentsection, studentnid, studentphone, studentfather, studentmother, studentaddress, studentroll) => {
+
+      const studentdata = {email, studentname, role, studentclass, studentsection, studentnid, studentphone, studentfather, studentmother, studentaddress, studentroll, sessionFee}
+      fetch('http://localhost:5000/postSessionFee', {
+          method: 'POST',
+          headers: {
+              'content-type':'application/json'
+          },
+          body: JSON.stringify(studentdata)
+      })
+      .then(res => res.json())
+      .then(data => {
+         console.log(data)
+      })
+  }
     return (
       <Form onSubmit={AddstudentsHandler} className="p-3 studentregform mt-4">
       <Row className="mb-3 ">

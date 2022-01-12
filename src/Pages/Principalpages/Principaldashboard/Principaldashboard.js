@@ -58,9 +58,9 @@ const Principaldashboard = () => {
                     <Route path={`${path}/maintainteachers`}>
                         <Maintainteachers></Maintainteachers>
                     </Route>
-                    <Route path={`${path}/addstudent`}>
+                    {/* <Route path={`${path}/addstudent`}>
                         <Addstudents></Addstudents>
-                    </Route>
+                    </Route> */}
 
                     <Route path={`${path}/addresultfive`}>
                         <Addresultfive></Addresultfive>

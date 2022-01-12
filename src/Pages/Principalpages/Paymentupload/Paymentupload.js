@@ -31,7 +31,7 @@ const Paymentupload = () => {
     })
     const PaymentUploadHandler = e => {
         e.preventDefault();
-        console.log(paymentarray)
+
         fetch('http://localhost:5000/postpayment', {
             method: 'POST',
             headers: {
@@ -48,9 +48,8 @@ const Paymentupload = () => {
               )
             e.target.reset()
         })
-        
-
     }
+
     return (
        <Row className='container-fluid d-flex justify-content-center align-items-center'>
         <Col className='addresultform my-4' lg={8} md={10} sm={12}>
@@ -87,6 +86,7 @@ const Paymentupload = () => {
             <button type='submit' className='btn btn-dark text-warning fw-bold '>Add Payment</button>
             </Form>
         </Col>
+ 
        </Row>
     );
 };

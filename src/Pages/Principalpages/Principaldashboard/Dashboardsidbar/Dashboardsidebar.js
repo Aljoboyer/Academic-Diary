@@ -130,9 +130,9 @@ const Dashboardsidebar = () => {
             </Dropdown>
         </ListGroup.Item>
 
-        <ListGroup.Item action variant="secondary">
+        {/* <ListGroup.Item action variant="secondary">
         <Link className="homelink" to={`${url}/addstudent`}><button className="btn btn-success">Add Student</button></Link>
-        </ListGroup.Item>
+        </ListGroup.Item> */}
 
         <ListGroup.Item action variant="secondary">
         <Link className="homelink" to={`${url}/maintainteachers`}><button className="btn btn-success">Maintain Teachers</button></Link>
