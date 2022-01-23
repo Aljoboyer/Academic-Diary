@@ -163,7 +163,7 @@ const Addresult = () => {
 
 
   const ResultSubmitHandler = e => {
-      const newresult = {...result,email: user.email, banglaCgpa,englishCgpa,mathCgpa,drawCgpa,Failcount, firsttermCgpa, secondtermCgpa, thirdtermCgpa}
+      const newresult = {...result,banglaCgpa,englishCgpa,mathCgpa,drawCgpa,Failcount, firsttermCgpa, secondtermCgpa, thirdtermCgpa}
  
       e.preventDefault()
 

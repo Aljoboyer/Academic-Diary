@@ -260,7 +260,7 @@ const Addresultforonetofour = () => {
 
     const ResultSubmitHandler = e => {
         e.preventDefault()
-        const newresult = {...result,email: user.email, studentname: result.studentname, studentclass: result.studentclass, firsttermCgpa, secondtermCgpa,mathCgpa, thirdtermCgpa, bangla1Cgpa, bangla2Cgpa, english1Cgpa, english2Cgpa, religionCgpa,gsCgpa, Failcount1}
+        const newresult = {...result, studentname: result.studentname, studentclass: result.studentclass, firsttermCgpa, secondtermCgpa,mathCgpa, thirdtermCgpa, bangla1Cgpa, bangla2Cgpa, english1Cgpa, english2Cgpa, religionCgpa,gsCgpa, Failcount1}
           fetch('http://localhost:5000/resultinsert',{
             method: 'POST',
             headers:{

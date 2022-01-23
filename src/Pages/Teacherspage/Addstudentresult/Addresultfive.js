@@ -230,7 +230,7 @@ const Addresultfive = () => {
   }
     const ResultSubmitHandler = e => {
         e.preventDefault()
-          const newresult = {...result, studentname: result.studentname, studentclass: result.studentclass, email: user.email, fivebanglaCgpa,fiveenglishCgpa , fivemathCgpa , fivegsCgpa , religionCgpa , scienceCgpa, firsttermCgpa, secondtermCgpa,thirdtermCgpa}
+          const newresult = {...result, studentname: result.studentname, studentclass: result.studentclass,  fivebanglaCgpa,fiveenglishCgpa , fivemathCgpa , fivegsCgpa , religionCgpa , scienceCgpa, firsttermCgpa, secondtermCgpa,thirdtermCgpa}
           fetch('http://localhost:5000/resultinsert',{
             method: 'POST',
             headers:{

@@ -13,7 +13,7 @@ const Studentpayment = () => {
     const history = useHistory();
     const [sessionFees, setSessionFees] = useState({});
     const [num, setNum] = useState('');
-
+console.log('sessionFees',sessionFees)
     useEffect(() => {
         if(user.email)
         {
@@ -103,43 +103,88 @@ const Studentpayment = () => {
             </tbody>
         </Table>
         </Col>
+
         <Col lg={4} md={12} sm={12}>
-            <h4 className='fw-bold text-primary my-4'>Session Fee</h4>
-            <h5 className="fw-bold my-4">Your Total SessionFee: {sessionFees.sessionFee}</h5>
+            <h3 className='fw-bold text-primary my-4'>SESSION FEE DETAILS</h3>
+            {
+                sessionFees.studentclass === 'KG' || sessionFees.studentclass === 'Nursery' ? <><hr />
+                <p className='fw-bold'>ADMISSION FEE: 700</p>
+                <hr />
+                <p className='fw-bold'>PRESENT MONTH FEE: 500</p>
+                <hr />
+                <p className='fw-bold'>DIARY: 30</p>
+                <hr />
+                <p className='fw-bold'>LIBRARY FEE: 70</p>
+                <hr />
+                <p className='fw-bold'>SPORTS FEE: 80</p>
+                <hr />
+                <p className='fw-bold'>OTHER SERVICE FEE: 120</p>
+                    <hr /> </>: ''
+            }
+            {
+                sessionFees.studentclass === 'Class-One' || sessionFees.studentclass === 'Class-Two' || sessionFees.studentclass === 'Class-Three' ? <><hr />
+                <p className='fw-bold'>ADMISSION FEE: 850</p>
+                <hr />
+                <p className='fw-bold'>PRESENT MONTH FEE: 600</p>
+                <hr />
+                <p className='fw-bold'>DIARY: 50</p>
+                <hr />
+                <p className='fw-bold'>LIBRARY FEE: 150</p>
+                <hr />
+                <p className='fw-bold'>SPORTS FEE: 150</p>
+                <hr />
+                <p className='fw-bold'>OTHER SERVICE FEE: 200</p>
+                    <hr /> </>: ''
+            }
+                {
+                sessionFees.studentclass === 'Class-Four' || sessionFees.studentclass === 'Class-Five'  ? <><hr />
+                <p className='fw-bold'>ADMISSION FEE: 1000</p>
+                <hr />
+                <p className='fw-bold'>PRESENT MONTH FEE: 800</p>
+                <hr />
+                <p className='fw-bold'>DIARY: 50</p>
+                <hr />
+                <p className='fw-bold'>LIBRARY FEE: 200</p>
+                <hr />
+                <p className='fw-bold'>SPORTS FEE: 200</p>
+                <hr />
+                <p className='fw-bold'>OTHER SERVICE FEE: 250</p>
+                    <hr /> </>: ''
+            }
+            <h5 className="fw-bold my-4 text-info">YOUR TOTAL SESSION FEE: {sessionFees.sessionFee}</h5>
             {
                 sessionFees?.paymentStatus === 'PAID' ? <h4 className='fw-bold text-success'>PAID</h4> : <button onClick={() => setShow(true)} className='btn btn-dark text-warning fw-bold my-4'>PAY FEE {sessionFees.sessionFee} TAKA</button>
             }
-            
         </Col>
 
-
-    <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title className='modaltitle'>Pay Fee With Bikash</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-            <img className='img-fluid' src={bikashformlogo} alt="" />
-           <Row  className="d-flex justify-content-center  p-4 my-4">
-                <Form onSubmit={PaymentHandler}>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Enter Your Number</Form.Label>
-                    <Form.Control name="teachernotice" type='number' placeholder='Enter Your Number' onBlur={OnBlurHandler} rows={4} />
-                </Form.Group>
-                <button type="submit" className="btn text-light fw-bold fs-6 bikashbtn">ENTER</button>
-            </Form>
-           </Row>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button  className="btn btn-warning" variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-    </Modal>
+{/* -----------------------Session Fee Modal-------------------- */}
+        <Modal
+            show={show}
+            onHide={handleClose}
+            backdrop="static"
+            keyboard={false}
+        >
+            <Modal.Header closeButton>
+            <Modal.Title className='modaltitle'>Pay Fee With Bikash</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <img className='img-fluid' src={bikashformlogo} alt="" />
+            <Row  className="d-flex justify-content-center  p-4 my-4">
+                    <Form onSubmit={PaymentHandler}>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                        <Form.Label>Enter Your Number</Form.Label>
+                        <Form.Control name="teachernotice" type='number' placeholder='Enter Your Number' onBlur={OnBlurHandler} rows={4} />
+                    </Form.Group>
+                    <button type="submit" className="btn text-light fw-bold fs-6 bikashbtn">ENTER</button>
+                </Form>
+            </Row>
+            </Modal.Body>
+            <Modal.Footer>
+            <Button  className="btn btn-warning" variant="secondary" onClick={handleClose}>
+                Close
+            </Button>
+            </Modal.Footer>
+        </Modal>
     </Row>
     );
 };

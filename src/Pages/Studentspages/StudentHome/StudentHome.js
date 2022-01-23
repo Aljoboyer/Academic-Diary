@@ -9,10 +9,10 @@ const StudentHome = () => {
     const [notices, setNotices] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/getstudentnotice')
+        fetch(`http://localhost:5000/getstudentnotice?section=${allstduentsection.studentsection}&&class=${allstduentsection.studentclass}`)
         .then(res => res.json())
         .then(data => setNotices(data))
-    },[])
+    },[allstduentsection.studentsection,allstduentsection.studentclass])
     return (
         <Row className="container-fluid justify-content-center studentcolam">
             <h2 className='text-center fw-bold text-primary my-4'>NOTICE BOARD</h2>

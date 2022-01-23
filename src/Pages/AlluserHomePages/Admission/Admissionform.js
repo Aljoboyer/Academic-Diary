@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Row, Col, Form} from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-
+import Swal from 'sweetalert2';
 const Admissionform = () => {
     const [admissionData, setAddmissionData] = useState({});
     const history  = useHistory()
@@ -16,7 +16,17 @@ const Admissionform = () => {
 
     const AddmissionHandler = (e) => {
         e.preventDefault()
-        history.push('/AddmissionPayment', {state: admissionData})
+        if(admissionData.birthCirtificateNo && admissionData.motherProfession)
+            {
+                history.push('/AddmissionPayment', {state: admissionData})
+            }
+        else{
+            Swal.fire(
+                'Please Fill-Up The Full Form',
+                '',
+                'error'
+              )
+            }
     }
     return (
         <div className="container-fluid">

@@ -5,15 +5,17 @@ import './publishnotice.css';
 import Swal from 'sweetalert2'
 import Teacherpulishnotice from './Teacherpulishnotice';
 
+import useAuth from '../../../Context/useAuth';
+
 const Publishnotice = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const [editresult, setEditresult] = useState({})
-
+    const {sectionclass} = useAuth()
     const [notices, setNotices] = useState([]);
     const [fieldnotice, setFieldnotice] = useState('')
     const [demo, setDemo] = useState([]);
-
+console.log('sectionclass',sectionclass)
     const OnChangeHandler = e => {
         const name = e.target.name;
         const val = e.target.value;
@@ -33,7 +35,7 @@ const Publishnotice = () => {
     }
 
     useEffect(() => {
-        fetch('http://localhost:5000/getstudentnotice')
+        fetch(`http://localhost:5000/getstudentnotice?section=${sectionclass.section}&&class=${sectionclass.classteacher}`)
         .then(res => res.json())
         .then(data => setNotices(data))
     },[demo])
@@ -41,7 +43,7 @@ const Publishnotice = () => {
     const NoticeHandler = e =>{
         e.preventDefault();
         const dates = new Date().toLocaleDateString()
-        const newnotice = {title: fieldnotice.title, description: fieldnotice.description, publishdate: dates};
+        const newnotice = {title: fieldnotice.title, description: fieldnotice.description, publishdate: dates, studentclass: sectionclass.classteacher, studentsection: sectionclass.section};
 
 
         fetch('http://localhost:5000/studentnotice',{

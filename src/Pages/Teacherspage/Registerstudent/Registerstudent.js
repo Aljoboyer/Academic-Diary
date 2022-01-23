@@ -7,10 +7,10 @@ import './regstudent.css';
 const Registerstudent = () => {
   const [regdata, setRegData] = useState({})
   const {RegisterUser, setUser} = useAuth();
-    let sessionFee;
+      let sessionFee;
       if(regdata.studentclass === 'KG' || regdata.studentclass === 'Nursery'){
         sessionFee = 1500
-      }
+      } 
       else  if(regdata.studentclass === 'Class-One' || regdata.studentclass === 'Class-Two' || regdata.studentclass === 'Class-Three' ){
         sessionFee = 2000
       }
@@ -27,7 +27,7 @@ const Registerstudent = () => {
   }
 
   const AddstudentsHandler = (e) => {
-    console.log('hitted')
+
       RegisterUser(regdata.email, regdata.studentPassword)
       .then((userCredential) => {
         // Signed in 
@@ -51,31 +51,31 @@ const Registerstudent = () => {
     e.preventDefault()
   }
 
-       //saving student to database
-       const SaveStudent = (email, studentname, role, studentclass, studentsection, studentnid, studentphone, studentfather, studentmother, studentaddress, studentroll) => {
+    //saving student to database
+    const SaveStudent = (email, studentname, role, studentclass, studentsection, studentnid, studentphone, studentfather, studentmother, studentaddress, studentroll) => {
 
-          const studentdata = {email, studentname, role, studentclass, studentsection, studentnid, studentphone, studentfather, studentmother, studentaddress, studentroll}
-    
-            fetch('http://localhost:5000/useradd', {
-                method: 'POST',
-                headers: {
-                    'content-type':'application/json'
-                },
-                body: JSON.stringify(studentdata)
-            })
-            .then(res => res.json())
-            .then(data => {
-              if(data)
-              {
-                Swal.fire(
-                  'Student Added Successfully',
-                  '',
-                  'success'
-                )
-              }
-            })
-        }
-          //adding student session fee
+      const studentdata = {email, studentname, role, studentclass, studentsection, studentnid, studentphone, studentfather, studentmother, studentaddress, studentroll}
+
+        fetch('http://localhost:5000/useradd', {
+            method: 'POST',
+            headers: {
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(studentdata)
+        })
+        .then(res => res.json())
+        .then(data => {
+          if(data)
+          {
+            Swal.fire(
+              'Student Added Successfully',
+              '',
+              'success'
+            )
+          }
+        })
+    }
+    //adding student session fee
     const SeessionFeeHandler = (email, studentname, role, studentclass, studentsection, studentnid, studentphone, studentfather, studentmother, studentaddress, studentroll) => {
 
       const studentdata = {email, studentname, role, studentclass, studentsection, studentnid, studentphone, studentfather, studentmother, studentaddress, studentroll, sessionFee}
@@ -90,7 +90,7 @@ const Registerstudent = () => {
       .then(data => {
          console.log(data)
       })
-  }
+    }
     return (
       <Form onSubmit={AddstudentsHandler} className="p-3 studentregform mt-4">
       <Row className="mb-3 ">
