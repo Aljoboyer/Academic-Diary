@@ -21,6 +21,10 @@ const IndividualFormCheck = () => {
             <Row className='container d-flex justify-content-center p-3'>
                 <Col ref={ref} className="indvidualform p-4 ms-4" lg={9} md={9} sm={12}>
                 <h4 className='fw-bold text-center my-4 pb-4'>Chittagong City Academy School Addmission Form</h4>
+                    <Row className='d-flex justify-content-end'>
+                        <Col lg={5}> <img style={{width: '250px', height: '250px'}} src={`data:image/jpeg;base64,${addmissionform.img}`} alt="" /> </Col>
+                    </Row>
+                    <hr />
                     <h6 className='mb-3 mt-4'><span className='text-primary fw-bold'>Student Name:</span> <span className='formvalu'>{addmissionform.studentName}</span> </h6>
                     <hr  className='fw-bold'/>
                     <Row className='mb-3'>

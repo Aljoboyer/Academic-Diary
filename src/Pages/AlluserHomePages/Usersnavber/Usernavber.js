@@ -62,7 +62,7 @@ const Usernavber = () => {
               }}>Admission Procedure And Policy</NavDropdown.Item>
                <NavDropdown.Divider />
                <NavDropdown.Item onClick={() => {
-                  history.push('/admission', {state: 'Form'})
+                  history.push('/Admissionform')
               }}>Admission Form</NavDropdown.Item>
                <NavDropdown.Divider />
                <NavDropdown.Item onClick={() => {

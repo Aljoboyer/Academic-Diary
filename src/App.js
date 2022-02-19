@@ -28,6 +28,7 @@ import Contactus from './Pages/AlluserHomePages/Contactus/Contactus'
 import AddmissionPayment from './Pages/AlluserHomePages/Admission/AddmissionPayment/AddmissionPayment';
 import AddmissionSuccess from './Pages/AlluserHomePages/Admission/AddmissionPayment/AddmissionSuccess';
 import IndividualFormCheck from './Pages/Principalpages/AdmissionFormCheck/IndividualFormCheck';
+import Admissionform from './Pages/AlluserHomePages/Admission/Admissionform';
 function App() {
   return (
     <div className="container-fluid">
@@ -61,6 +62,10 @@ function App() {
                 </Route>
                 <Route exact path="/IndividualFormCheck/:id">
                   <IndividualFormCheck></IndividualFormCheck>
+                </Route>
+
+                <Route exact path="/Admissionform">
+                  <Admissionform></Admissionform>
                 </Route>
 
             {/* -------------student dashboard----------- */}

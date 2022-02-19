@@ -16,17 +16,14 @@ const AddmissionPayment = () => {
 
     const PaymentHandler = (e) => {
         e.preventDefault()
-        const paymentDetails = {
-            total_amount: parseInt(215),
-            admissiondata
-        }
+     
         if(num.length >= 11){
             fetch('http://localhost:5000/addmissionpayment', {
             method: 'POST',
             headers:{
                 'content-type' : 'application/json'
             },
-            body: JSON.stringify(paymentDetails)
+            body: JSON.stringify(admissiondata)
         })
         .then(res => res.json())
         .then(data => {
@@ -59,33 +56,33 @@ const AddmissionPayment = () => {
             </Row>
 
             {/* -----------------MODAL----------- */}
-    <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title className='modaltitle'>Pay Fee With Bikash</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-            <img className='img-fluid' src={bikashlogo} alt="" />
-           <Row  className="d-flex justify-content-center  p-4 my-4">
-                <Form onSubmit={PaymentHandler}>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Enter Your Number</Form.Label>
-                    <Form.Control name="teachernotice" type='number' placeholder='Enter Your Number' onBlur={(e) => setNum(e.target.value)} rows={4} />
-                </Form.Group>
-                <button type="submit" className="btn text-light fw-bold fs-6 bikashbtn">ENTER</button>
-            </Form>
-           </Row>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button  className="btn btn-warning" variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-    </Modal>
+        <Modal
+            show={show}
+            onHide={handleClose}
+            backdrop="static"
+            keyboard={false}
+        >
+            <Modal.Header closeButton>
+            <Modal.Title className='modaltitle'>Pay Fee With Bikash</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <img className='img-fluid' src={bikashlogo} alt="" />
+            <Row  className="d-flex justify-content-center  p-4 my-4">
+                    <Form onSubmit={PaymentHandler}>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                        <Form.Label>Enter Your Number</Form.Label>
+                        <Form.Control name="teachernotice" type='number' placeholder='Enter Your Number' onBlur={(e) => setNum(e.target.value)} rows={4} />
+                    </Form.Group>
+                    <button type="submit" className="btn text-light fw-bold fs-6 bikashbtn">ENTER</button>
+                </Form>
+            </Row>
+            </Modal.Body>
+            <Modal.Footer>
+            <Button  className="btn btn-warning" variant="secondary" onClick={handleClose}>
+                Close
+            </Button>
+            </Modal.Footer>
+        </Modal>
         </div>
     );
 };

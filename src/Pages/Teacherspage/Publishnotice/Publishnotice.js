@@ -15,7 +15,7 @@ const Publishnotice = () => {
     const [notices, setNotices] = useState([]);
     const [fieldnotice, setFieldnotice] = useState('')
     const [demo, setDemo] = useState([]);
-console.log('sectionclass',sectionclass)
+
     const OnChangeHandler = e => {
         const name = e.target.name;
         const val = e.target.value;
